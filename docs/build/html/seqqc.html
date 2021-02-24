@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Sequence QC/Intro to Galaxy &mdash; NPDN_HTS_2021 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ntroduction to Genome Assembly" href="assembly.html" />
+    <link rel="prev" title="NPDN HTS Bioinformatics Training 2021" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> NPDN_HTS_2021
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sequence QC/Intro to Galaxy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lecture">Lecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#login-to-galaxy">Login to Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#name-history">Name History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upload-data">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assess-dataset-quality">Assess Dataset Quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#improve-dataset-quality">Improve Dataset Quality</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">ntroduction to Genome Assembly</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NPDN_HTS_2021</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sequence QC/Intro to Galaxy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/seqqc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sequence-qc-intro-to-galaxy">
+<h1>Sequence QC/Intro to Galaxy<a class="headerlink" href="#sequence-qc-intro-to-galaxy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lecture">
+<h2>Lecture<a class="headerlink" href="#lecture" title="Permalink to this headline">¶</a></h2>
+<div class="iframe-box iframe-box-presentation iframe-box-google"><iframe src="https://docs.google.com/presentation/d/18HzzJa0EQ4wS1ttqtRbBACIBHSKTtFf77GFgTGhnRxU/embed?start=false&loop=false&delayms=3000" frameborder="0" width="576" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div></div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In this practical you will learn to import and assess the quality of raw high throughput sequencing sequencing data in Galaxy.</p>
+<p>The first dataset you will be working with is from an Illumina MiSeq dataset. The sequenced organism is the unculturable phloem-limited alphaproteobacterium “Candidatus Liberibacter
+asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced bacterium was obtained directly from an infected Citrus sinensis sample in Texas. The sequencing was done as paired-end 2x300bp.</p>
+<img alt="_images/CitrusGreening1.jpg" src="_images/CitrusGreening1.jpg" />
+</div>
+<div class="section" id="login-to-galaxy">
+<h2>Login to Galaxy<a class="headerlink" href="#login-to-galaxy" title="Permalink to this headline">¶</a></h2>
+<p>We will be using Galaxy for performing many of our bioinformatic analysis. This is a great free tool for performing bioinformatics, no coding necessary! There are lots of tutorials available online, both on how to use Galaxy and perform specific analysis. See training materials at link below on your own time.</p>
+<p><a class="reference external" href="https://training.galaxyproject.org/training-material/">https://training.galaxyproject.org/training-material/</a></p>
+<div class="admonition-hands-on-login admonition">
+<p class="admonition-title">Hands-On: Login</p>
+<ol class="arabic simple">
+<li><p>Open your favorite web browser (Chrome, Safari, or Firefox) and login to Galaxy Europe. If not already registered for Galaxy Europe, use this link to register and login:</p></li>
+</ol>
+<p><a class="reference external" href="https://usegalaxy.eu/">https://usegalaxy.eu/</a></p>
+<blockquote>
+<div><img alt="_images/galaxylogin.png" src="_images/galaxylogin.png" />
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Once logged in use the following link to access the training queue for this training. This link will only be available during the training, however your data and analysis results will still be available at usegalaxy.eu once training is over.</p></li>
+</ol>
+<p><a class="reference external" href="https://usegalaxy.eu/join-training/npdn2021">https://usegalaxy.eu/join-training/npdn2021</a></p>
+</div>
+<p>The Galaxy homepage is divided into three panels:</p>
+<ul class="simple">
+<li><p>Tools on the left</p></li>
+<li><p>Viewing panel in the middle</p></li>
+<li><p>History of analysis and files on the right</p></li>
+</ul>
+<img alt="_images/galaxy_interface.png" src="_images/galaxy_interface.png" />
+</div>
+<div class="section" id="name-history">
+<h2>Name History<a class="headerlink" href="#name-history" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-hands-on-name-history admonition">
+<p class="admonition-title">Hands-On: Name History</p>
+<ol class="arabic simple">
+<li><p>Go to history panel (on the right)</p></li>
+<li><p>Click on the history name (which by default is “Unnamed history”)</p></li>
+</ol>
+<img alt="_images/rename_history.png" src="_images/rename_history.png" />
+<ol class="arabic simple" start="3">
+<li><p>Type in a new name,  “NPDN HTS 2021”</p></li>
+<li><p>Press Enter on your keyboard to save it.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="upload-data">
+<h2>Upload Data<a class="headerlink" href="#upload-data" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-hands-on-upload-data admonition">
+<p class="admonition-title">Hands-On: Upload Data</p>
+<ol class="arabic simple">
+<li><p>At the top of the Tools panel (on the left), click Upload</p></li>
+</ol>
+<img alt="_images/upload-data.png" src="_images/upload-data.png" />
+<ol class="arabic simple" start="2">
+<li><p>Click on ‘Collection’ Tab at the op</p></li>
+<li><p>Click ‘Choose local files’ and navigate to where you placed the folder ‘HLB_raw_reads’ and select both files.</p></li>
+<li><p>Click ‘start’ and ‘build’</p></li>
+<li><p>Assign a new name to the collection, ‘hlb-tx’</p></li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>We only sequenced this genome once, why do we have two files?</strong></p>
+</div>
+<p>We performed paired-end sequencing, one set of reads is the forward read and the other is the reverse.</p>
+<img alt="_images/pairedend.png" src="_images/pairedend.png" />
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="assess-dataset-quality">
+<h2>Assess Dataset Quality<a class="headerlink" href="#assess-dataset-quality" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-hands-on-assess-data-quality admonition">
+<p class="admonition-title">Hands-On: Assess Data Quality</p>
+<ol class="arabic simple">
+<li><p>At the top of the Tools panel (on the left), search for ‘fastqc’ and click on it.</p></li>
+<li><p>Choose the collection you just created, ‘hlb-tx’</p></li>
+</ol>
+<p>..image:: _static/fastqc_upload.png</p>
+<ol class="arabic simple" start="3">
+<li><p>Scroll down and click ‘Execute’</p></li>
+</ol>
+</div>
+<p>FastQC provides various output statistics. Scroll through and examine them. At what point in the read do quality scores start declining?</p>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>Look at the GC content plot, there may be two peaks, why is this?</strong></p>
+</div>
+<p>In metagenomic datasets, like this, you may get multiple GC peaks representing different GC content for the different taxa in the sample (i.e. one peak for host and one for pathogen)</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="improve-dataset-quality">
+<h2>Improve Dataset Quality<a class="headerlink" href="#improve-dataset-quality" title="Permalink to this headline">¶</a></h2>
+<p>Illumina sequencing technology requires to ligate adapters to both ends of genomic material to facilitate binding and sequencing on the flowcell. Adapter sequences should be removed because they can interfere with genome assembly. We will use Trimmomatic for adapter trimming and quality filtering.</p>
+<p>Read more about Trimmomatic here: <a class="reference external" href="http://www.usadellab.org/cms/?page=trimmomatic">http://www.usadellab.org/cms/?page=trimmomatic</a></p>
+<div class="admonition-hands-on-improve-data-quality admonition">
+<p class="admonition-title">Hands-On: Improve Data Quality</p>
+<ol class="arabic simple">
+<li><p>At the top of the Tools panel (on the left), search for ‘trimmomatic’ and click on it.</p></li>
+<li><p>Select ‘Paired-end’ (two separate input files) and then select the hlb reads you uploaded to the collection.</p></li>
+</ol>
+<p>..image:: _static/trim.png</p>
+<ol class="arabic simple" start="3">
+<li><p>Under ‘Perform initial ILLUMINACLIP step’ choose ‘Yes’ and keep defaults.</p></li>
+<li><p>Click ‘Execute’</p></li>
+</ol>
+</div>
+<p>On your own time, please run FastQC again to see how trimming improved the dataset quality.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="assembly.html" class="btn btn-neutral float-right" title="ntroduction to Genome Assembly" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="NPDN HTS Bioinformatics Training 2021" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Schyler Nunziata.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
