@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="ntroduction to Genome Assembly" href="assembly.html" />
-    <link rel="prev" title="NPDN HTS Bioinformatics Training 2021" href="index.html" /> 
+    <link rel="next" title="Introduction to Genome Assembly" href="assembly.html" />
+    <link rel="prev" title="Intro to HTS" href="intro.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,6 +87,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro to HTS</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Sequence QC/Intro to Galaxy</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#lecture">Lecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -97,7 +98,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#improve-dataset-quality">Improve Dataset Quality</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="assembly.html">ntroduction to Genome Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Introduction to Genome Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assemblyqc.html">Assess Assembly Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phylogeny.html">Generate a Phylogeny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metagenomics.html">Metagenomics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabarcode.html">Metabarcoding/Unique Genes</a></li>
 </ul>
 
             
@@ -169,17 +174,17 @@
 <h1>Sequence QC/Intro to Galaxy<a class="headerlink" href="#sequence-qc-intro-to-galaxy" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="lecture">
 <h2>Lecture<a class="headerlink" href="#lecture" title="Permalink to this headline">¶</a></h2>
-<div class="iframe-box iframe-box-presentation iframe-box-google"><iframe src="https://docs.google.com/presentation/d/18HzzJa0EQ4wS1ttqtRbBACIBHSKTtFf77GFgTGhnRxU/embed?start=false&loop=false&delayms=3000" frameborder="0" width="576" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div></div>
+<div class="iframe-box iframe-box-presentation iframe-box-google"><iframe src="https://docs.google.com/presentation/d/1A1MowVqyFUgI47qzpWQ_yHVRxRfiqXqadST91VA2hvk/embed?start=false&loop=false&delayms=3000" frameborder="0" width="576" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div></div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In this practical you will learn to import and assess the quality of raw high throughput sequencing sequencing data in Galaxy.</p>
 <p>The first dataset you will be working with is from an Illumina MiSeq dataset. The sequenced organism is the unculturable phloem-limited alphaproteobacterium “Candidatus Liberibacter
-asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced bacterium was obtained directly from an infected Citrus sinensis sample in Texas. The sequencing was done as paired-end 2x300bp.</p>
+asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced bacterium was obtained directly from the root of an infected pummelo sample in California. The sequencing was done as paired-end 2x300bp.</p>
 <img alt="_images/CitrusGreening1.jpg" src="_images/CitrusGreening1.jpg" />
 </div>
 <div class="section" id="login-to-galaxy">
 <h2>Login to Galaxy<a class="headerlink" href="#login-to-galaxy" title="Permalink to this headline">¶</a></h2>
-<p>We will be using Galaxy for performing many of our bioinformatic analysis. This is a great free tool for performing bioinformatics, no coding necessary! There are lots of tutorials available online, both on how to use Galaxy and perform specific analysis. See training materials at link below on your own time.</p>
+<p>We will be using Galaxy for performing many of our bioinformatic analyses. This is a great free tool for performing bioinformatics, no coding necessary! There are lots of tutorials available online, both on how to use Galaxy and perform specific analysis. See training materials at link below on your own time.</p>
 <p><a class="reference external" href="https://training.galaxyproject.org/training-material/">https://training.galaxyproject.org/training-material/</a></p>
 <div class="admonition-hands-on-login admonition">
 <p class="admonition-title">Hands-On: Login</p>
@@ -228,9 +233,9 @@ asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced 
 <img alt="_images/upload-data.png" src="_images/upload-data.png" />
 <ol class="arabic simple" start="2">
 <li><p>Click on ‘Collection’ Tab at the op</p></li>
-<li><p>Click ‘Choose local files’ and navigate to where you placed the folder ‘HLB_raw_reads’ and select both files.</p></li>
+<li><p>Click ‘Choose local files’ and navigate to where you placed the folder ‘raw_reads’ and select both files.</p></li>
 <li><p>Click ‘start’ and ‘build’</p></li>
-<li><p>Assign a new name to the collection, ‘hlb-tx’</p></li>
+<li><p>Assign a new name to the collection, ‘hlb-root’</p></li>
 </ol>
 </div>
 <hr class="docutils" />
@@ -249,7 +254,7 @@ asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced 
 <p class="admonition-title">Hands-On: Assess Data Quality</p>
 <ol class="arabic simple">
 <li><p>At the top of the Tools panel (on the left), search for ‘fastqc’ and click on it.</p></li>
-<li><p>Choose the collection you just created, ‘hlb-tx’</p></li>
+<li><p>Choose the collection you just created, ‘hlb-root’</p></li>
 </ol>
 <p>..image:: _static/fastqc_upload.png</p>
 <ol class="arabic simple" start="3">
@@ -262,7 +267,7 @@ asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced 
 <div class="header docutils container">
 <p><strong>Look at the GC content plot, there may be two peaks, why is this?</strong></p>
 </div>
-<p>In metagenomic datasets, like this, you may get multiple GC peaks representing different GC content for the different taxa in the sample (i.e. one peak for host and one for pathogen)</p>
+<p>In metagenomic datasets, like this, you may get multiple GC peaks representing different GC content for the different taxa in the sample (i.e. one peak for host DNA and one for pathogen)</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -276,13 +281,13 @@ asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced 
 <li><p>At the top of the Tools panel (on the left), search for ‘trimmomatic’ and click on it.</p></li>
 <li><p>Select ‘Paired-end’ (two separate input files) and then select the hlb reads you uploaded to the collection.</p></li>
 </ol>
-<p>..image:: _static/trim.png</p>
+<img alt="_images/trim.png" src="_images/trim.png" />
 <ol class="arabic simple" start="3">
 <li><p>Under ‘Perform initial ILLUMINACLIP step’ choose ‘Yes’ and keep defaults.</p></li>
 <li><p>Click ‘Execute’</p></li>
 </ol>
 </div>
-<p>On your own time, please run FastQC again to see how trimming improved the dataset quality.</p>
+<p>If you have time, please run FastQC again to see how trimming improved the dataset quality. If not, run this analysis later on your own time.</p>
 </div>
 </div>
 
@@ -292,8 +297,8 @@ asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced 
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="assembly.html" class="btn btn-neutral float-right" title="ntroduction to Genome Assembly" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="NPDN HTS Bioinformatics Training 2021" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="assembly.html" class="btn btn-neutral float-right" title="Introduction to Genome Assembly" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="intro.html" class="btn btn-neutral float-left" title="Intro to HTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -9,9 +9,14 @@ NPDN HTS Bioinformatics Training 2021
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   
+
+   intro
    seqqc
    assembly
+   assemblyqc
+   phylogeny
+   metagenomics
+   metabarcode
 
 
 Indices and tables

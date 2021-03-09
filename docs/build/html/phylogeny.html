@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Generate a Phylogeny &mdash; NPDN_HTS_2021 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Metagenomics" href="metagenomics.html" />
+    <link rel="prev" title="Assess Assembly Quality" href="assemblyqc.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> NPDN_HTS_2021
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro to HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqqc.html">Sequence QC/Intro to Galaxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Introduction to Genome Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assemblyqc.html">Assess Assembly Quality</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Generate a Phylogeny</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lecture">Lecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#annotate-genome">Annotate Genome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pan-genome-with-roary">Pan-Genome with Roary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#infer-phylogeny">Infer phylogeny</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualize-core-and-pan-genome">Visualize Core and Pan Genome</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="metagenomics.html">Metagenomics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabarcode.html">Metabarcoding/Unique Genes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NPDN_HTS_2021</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Generate a Phylogeny</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/phylogeny.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="generate-a-phylogeny">
+<h1>Generate a Phylogeny<a class="headerlink" href="#generate-a-phylogeny" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lecture">
+<h2>Lecture<a class="headerlink" href="#lecture" title="Permalink to this headline">¶</a></h2>
+<div class="iframe-box iframe-box-presentation iframe-box-google"><iframe src="https://docs.google.com/presentation/d/1CZ1yxAi3gTEdwXEivityEFApK-d8lbvGwRJ4APuJaWM/embed?start=false&loop=false&delayms=3000" frameborder="0" width="576" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div></div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Phylogentic analysis can help elucidate pathogen origins and whether there were multiple versus single introduction events an the potential source. Here, we will build a phylogenetic tree including our newly assembled genome, and genomes publicly available on NCBI.</p>
+</div>
+<div class="section" id="annotate-genome">
+<h2>Annotate Genome<a class="headerlink" href="#annotate-genome" title="Permalink to this headline">¶</a></h2>
+<p>The first step in building a phylogeny is annotating our newly assembled genome. Here we will use the program Prokka to identify features of interest in our genome.</p>
+<div class="admonition-hands-on-genome-annotation admonition">
+<p class="admonition-title">Hands-On: Genome Annotation</p>
+<ol class="arabic">
+<li><p>At the top of the Tools panel (on the left), search for ‘prokka’ and click on it.</p></li>
+<li><p>Run Prokka with the following parameters (leave everything else unchanged):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>contigs to annotate: <code class="docutils literal notranslate"><span class="pre">Length</span> <span class="pre">filtered</span> <span class="pre">genome</span> <span class="pre">assembly</span></code></p></li>
+</ul>
+<ol class="arabic" start="3">
+<li><p>Rename the gff file produced by prokka.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Find the prokka output ending in “.gff”, click on the pencil icon next to it to edit attributes</p></li>
+<li><p>Rename to <code class="docutils literal notranslate"><span class="pre">CA-root.gff3</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<p>Once prokka had finished, you should have the following files produced:</p>
+<ul class="simple">
+<li><p>The GFF and GBK files contain all of the information about the features annotated (in different formats.)</p></li>
+<li><p>The .txt file contains a summary of the number of features annotated.</p></li>
+<li><p>The .faa file contains the protein sequences of the genes annotated.</p></li>
+<li><p>The .ffn file contains the nucleotide sequences of the genes annotated.</p></li>
+</ul>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>How many coding sequences (CDS) were found in out assembled genome?</strong></p>
+</div>
+<p>By looking at the summary .txt file, you should see we annotated ~1067 CDS.</p>
+</div>
+</div>
+<div class="section" id="pan-genome-with-roary">
+<h2>Pan-Genome with Roary<a class="headerlink" href="#pan-genome-with-roary" title="Permalink to this headline">¶</a></h2>
+<p>In order to build our phylogeny, we need to know which genes are shared and which are unique across the genomes we are interested in. For the sake of time, we will only be working with the 8 compete HLB genomes available on NCBI. We will use the program Roary, which takes annotation files (gff) and calculates the pan genome.</p>
+<div class="admonition-hands-on-pan-genome-analysis admonition">
+<p class="admonition-title">Hands-On: Pan-Genome Analysis</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>At the top of the Tools panel (on the left), search for ‘roary’ and click on it.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p>Under select gff inputs to Roary, click the <code class="docutils literal notranslate"><span class="pre">upload</span> <span class="pre">datasets</span></code> icon.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Select ‘Choose local files’ and select all gff files in the ncbi-genomes directory you should have downloaded from CloudShare</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Make sure all gff files you just uploaded, and the CA-root.gff3 files are highlighted (Ctrl+click until highlighted blue)</p></li>
+<li><p>Execute with default parameters.</p></li>
+<li><p>When the program completes running, download the result file end in ‘Gene Presence Absence’ to your computer and rename it to ‘presence-absence.csv’</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>How many core genes were found among the genomes?</strong></p>
+</div>
+<p>By looking at the summary statistics file, you should see 770 core genes found.</p>
+<blockquote>
+<div><p>What does Roary do?</p>
+</div></blockquote>
+</div>
+<ul class="simple">
+<li><p>converts coding sequences into protein sequences</p></li>
+<li><p>clustered these protein sequences by several methods</p></li>
+<li><p>further refines clusters into orthologous genes</p></li>
+<li><p>for each sample, determines if gene is present/absent: produces gene_presence_absence.csv</p></li>
+<li><p>uses this gene p/a information to build a tree, using FastTree: produces accessory_binary_genes.fa.newick</p></li>
+<li><p>overall, calculates number of genes that are shared, and unique: produces summary_statistics.txt</p></li>
+<li><p>aligns the core genes (if option used, as above) for downstream analyses</p></li>
+</ul>
+</div>
+<div class="section" id="infer-phylogeny">
+<h2>Infer phylogeny<a class="headerlink" href="#infer-phylogeny" title="Permalink to this headline">¶</a></h2>
+<p>Here, we will infer the phylogeny using core gene snps.</p>
+<div class="admonition-hands-on-phylogeny-analysis admonition">
+<p class="admonition-title">Hands-On: Phylogeny Analysis</p>
+<ol class="arabic">
+<li><p>At the top of the Tools panel (on the left), search for ‘raxml’ and select ‘Phylogenetic reconstruction with RaXML’</p></li>
+<li><p>Parameters to set:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Source file with aligned sequences: <code class="docutils literal notranslate"><span class="pre">Roary</span> <span class="pre">core</span> <span class="pre">gene</span> <span class="pre">alignment</span></code> (file won’t have this exact name, but similar)</p></li>
+<li><p>Leave other parameters as default and run.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>When the program finishes running, download the file labeled ‘result’ to your computer and rename it ‘raxml.tree’. This file contains your generated phylogentic tree.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="visualize-core-and-pan-genome">
+<h2>Visualize Core and Pan Genome<a class="headerlink" href="#visualize-core-and-pan-genome" title="Permalink to this headline">¶</a></h2>
+<p>Here, we will use the web tool Phandango to visualize the phylogeny, as well as pan and core genomes of our analyzed genomes.</p>
+<div class="admonition-hands-on-phylogeny-analysis admonition">
+<p class="admonition-title">Hands-On: Phylogeny Analysis</p>
+<ol class="arabic">
+<li><p>Go to <a class="reference external" href="http://phandango.net">http://phandango.net</a></p></li>
+<li><p>Drag and drop the two results files we downladed (‘presence-absence.csv’ and ‘raxml.tree’) onto the landing page.</p></li>
+<li><p>View the tree of samples and their core and pan genomes</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Each blue colored column is a gene: genes are present or absent in each isolate</p></li>
+<li><p>the core genes are shared by all isolates</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<p>You should notice that our newly assembled genome has a large portion of genes absent that are shared among the other other genomes. Remember, we are working with a draft genome so not all genes will be identified. We are likely missing some genes that are present, but did not assemble. This may impact our phylogeny, depending on what proportion is missing.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>Look at the Phandango plot and circle the pan and core genomes.</strong></p>
+</div>
+<p>You should have circled all the shared genes as core, and the total of core and accessory genes as pan.</p>
+<blockquote>
+<div><img alt="_images/phandango-pan-core.png" src="_images/phandango-pan-core.png" />
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="metagenomics.html" class="btn btn-neutral float-right" title="Metagenomics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="assemblyqc.html" class="btn btn-neutral float-left" title="Assess Assembly Quality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Schyler Nunziata.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

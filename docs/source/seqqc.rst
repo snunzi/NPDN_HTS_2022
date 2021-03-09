@@ -4,7 +4,7 @@ Sequence QC/Intro to Galaxy
 Lecture
 ^^^^^^^
 
-.. slide:: https://docs.google.com/presentation/d/18HzzJa0EQ4wS1ttqtRbBACIBHSKTtFf77GFgTGhnRxU
+.. slide:: https://docs.google.com/presentation/d/1A1MowVqyFUgI47qzpWQ_yHVRxRfiqXqadST91VA2hvk
 
 Introduction
 ^^^^^^^^^^^^
@@ -12,14 +12,14 @@ Introduction
 In this practical you will learn to import and assess the quality of raw high throughput sequencing sequencing data in Galaxy.
 
 The first dataset you will be working with is from an Illumina MiSeq dataset. The sequenced organism is the unculturable phloem-limited alphaproteobacterium “Candidatus Liberibacter
-asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced bacterium was obtained directly from an infected Citrus sinensis sample in Texas. The sequencing was done as paired-end 2x300bp.
+asiaticus”, which causes Huanglongbing (HLB) disease on citrus. The sequenced bacterium was obtained directly from the root of an infected pummelo sample in California. The sequencing was done as paired-end 2x300bp.
 
 .. image:: _static/CitrusGreening1.jpg
 
 
 Login to Galaxy
 ^^^^^^^^^^^^^^^
-We will be using Galaxy for performing many of our bioinformatic analysis. This is a great free tool for performing bioinformatics, no coding necessary! There are lots of tutorials available online, both on how to use Galaxy and perform specific analysis. See training materials at link below on your own time. 
+We will be using Galaxy for performing many of our bioinformatic analyses. This is a great free tool for performing bioinformatics, no coding necessary! There are lots of tutorials available online, both on how to use Galaxy and perform specific analysis. See training materials at link below on your own time.
 
 https://training.galaxyproject.org/training-material/
 
@@ -72,11 +72,11 @@ Upload Data
 
     2. Click on 'Collection' Tab at the op
 
-    3. Click 'Choose local files' and navigate to where you placed the folder 'HLB_raw_reads' and select both files. 
+    3. Click 'Choose local files' and navigate to where you placed the folder 'raw_reads' and select both files.
 
     4. Click 'start' and 'build'
 
-    5. Assign a new name to the collection, 'hlb-tx'
+    5. Assign a new name to the collection, 'hlb-root'
 
 -------------------------
 
@@ -87,7 +87,7 @@ Upload Data
         **We only sequenced this genome once, why do we have two files?**
 
     We performed paired-end sequencing, one set of reads is the forward read and the other is the reverse.
-    
+
     .. image:: _static/pairedend.png
 
 ----------------------------
@@ -99,9 +99,9 @@ Assess Dataset Quality
 
     1. At the top of the Tools panel (on the left), search for 'fastqc' and click on it.
 
-    2. Choose the collection you just created, 'hlb-tx'
-    
-    ..image:: _static/fastqc_upload.png
+    2. Choose the collection you just created, 'hlb-root'
+
+    .. image:: _static/fastqc_upload.png
 
     3. Scroll down and click 'Execute'
 
@@ -115,14 +115,14 @@ FastQC provides various output statistics. Scroll through and examine them. At w
 
         **Look at the GC content plot, there may be two peaks, why is this?**
 
-    In metagenomic datasets, like this, you may get multiple GC peaks representing different GC content for the different taxa in the sample (i.e. one peak for host and one for pathogen)
+    In metagenomic datasets, like this, you may get multiple GC peaks representing different GC content for the different taxa in the sample (i.e. one peak for host DNA and one for pathogen)
 
 ----------------------------
 
 Improve Dataset Quality
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Illumina sequencing technology requires to ligate adapters to both ends of genomic material to facilitate binding and sequencing on the flowcell. Adapter sequences should be removed because they can interfere with genome assembly. We will use Trimmomatic for adapter trimming and quality filtering. 
+Illumina sequencing technology requires to ligate adapters to both ends of genomic material to facilitate binding and sequencing on the flowcell. Adapter sequences should be removed because they can interfere with genome assembly. We will use Trimmomatic for adapter trimming and quality filtering.
 
 Read more about Trimmomatic here: http://www.usadellab.org/cms/?page=trimmomatic
 
@@ -132,14 +132,10 @@ Read more about Trimmomatic here: http://www.usadellab.org/cms/?page=trimmomatic
 
     2. Select 'Paired-end' (two separate input files) and then select the hlb reads you uploaded to the collection.
 
-    ..image:: _static/trim.png
+    .. image:: _static/trim.png
 
-    3. Under 'Perform initial ILLUMINACLIP step' choose 'Yes' and keep defaults. 
+    3. Under 'Perform initial ILLUMINACLIP step' choose 'Yes' and keep defaults.
 
     4. Click 'Execute'
 
-On your own time, please run FastQC again to see how trimming improved the dataset quality.
-
-
-
-
+If you have time, please run FastQC again to see how trimming improved the dataset quality. If not, run this analysis later on your own time.
