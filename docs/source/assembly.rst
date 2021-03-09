@@ -104,7 +104,7 @@ Mapping with bowtie2 should have produced a sam file that contains all alignment
 
         * “Require that these flags are set”: ``Read is unmapped and Mate is unmapped``
 
-        ..image:: _static/samtoolsfilter.png
+        .. image:: _static/samtoolsfilter.png
 
     * “What would you like to have reported?”: ``All reads retained after filtering and subsampling``
 
