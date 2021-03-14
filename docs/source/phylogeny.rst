@@ -18,15 +18,15 @@ The first step in building a phylogeny is annotating our newly assembled genome.
 
 .. admonition:: Hands-On: Genome Annotation
 
-    1. At the top of the Tools panel (on the left), search for 'prokka' and click on it.
+	1. At the top of the Tools panel (on the left), search for 'prokka' and click on it.
 
-    2. Run Prokka with the following parameters (leave everything else unchanged):
+	2. Run Prokka with the following parameters (leave everything else unchanged):
 
-        * contigs to annotate: ``Filter sequences by length on X``
+		* contigs to annotate: ``Filter sequences by length on X``
 	
 	3. Click Execute.
 
-	3. When prokka finishes running, rename the gff file produced by prokka. 
+	4. When prokka finishes running, rename the gff file produced by prokka. 
 	
 		* Find the prokka output file ``Prokka on X: gff``, click on the pencil icon next to it to edit attributes
 		
@@ -71,9 +71,9 @@ In order to build our phylogeny, we need to know which genes are shared and whic
 		
 		* Leave all other parameters as default.
 	
-	4. Click Execute.
+	3. Click Execute.
 	
-	5. When the program completes running, download the result file ``Roary on X Gene Presence Absence' to your computer and rename it to 'presence-absence.csv'
+	4. When the program completes running, download the result file ``Roary on X Gene Presence Absence' to your computer and rename it to 'presence-absence.csv'
 	
 		* Click on the name of the file in the history menu, then click the disk icon to download.
 		
