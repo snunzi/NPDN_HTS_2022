@@ -104,7 +104,7 @@ Assess Dataset Quality
 	
 		* Leave everything else as defaults.
     
-    ..image:: _static/fastqc_upload.png
+    .. image:: _static/fastqc_upload.png
 
     3. Scroll down and click 'Execute'
 
