@@ -83,7 +83,7 @@ While the raw kraken output contains a lot of information, it is impossible to m
 
 .. admonition:: Hands-On: Generate a Kraken Report
 
-    1. In the tools menu search for 'kraken-report' tool and click on it. 
+	1. In the tools menu search for 'kraken-report' tool and click on it. 
 	
 	2. Run kraken-report with the following parameters:
 	
