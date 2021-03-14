@@ -17,17 +17,17 @@ First, we would like to view basic statistics about our assembly. We will use th
 
 .. admonition:: Hands-On: Genome QC Statistics
 
-    1. At the top of the Tools panel (on the left), search for 'Quast' and click on it.
+	1. At the top of the Tools panel (on the left), search for 'Quast' and click on it.
 
-    2. Run Quast with the following parameters:
+	2. Run Quast with the following parameters:
 
-        * Contigs/scaffolds file: ``CA-Root_S1_scaffolds.fasta``
+		* Contigs/scaffolds file: ``CA-Root_S1_scaffolds.fasta``
 
-        * Use a reference genome? ``Yes``
+		* Use a reference genome? ``Yes``
 
-        * Reference genome: ``psy62.fna.gz``
+		* Reference genome: ``psy62.fna.gz``
 
-        * Leave all else as default and click 'Execute'
+	3. Leave all else as default and click 'Execute'
 
 You should see multiple output file produced. Let's look at the HTML report, ``Quast on X: HTML report`` and gather some key information (click on eye icon next to this file). 
 
@@ -69,13 +69,13 @@ If you look at the Quast output, you'll see some of the contigs in our assembly 
 
 .. admonition:: Hands-On: Genome Comparison
 
-    1. At the top of the Tools panel (on the left), search for 'dnadiff' and click on it.
+	1. At the top of the Tools panel (on the left), search for 'dnadiff' and click on it.
 
-    2. Run the tool with following parameters:
+	2. Run the tool with following parameters:
 
-        * Reference sequence: ``psy62.fna.gz`` (Use drop down arrow)
+		* Reference sequence: ``psy62.fna.gz`` (Use drop down arrow)
 
-        * Query Sequence: ``CA-Root_S1_scaffolds.fasta``
+		* Query Sequence: ``CA-Root_S1_scaffolds.fasta``
 	
 	3. Click Execute.
 	
@@ -113,7 +113,7 @@ You should see by the genome statistics that many contigs we generated are quite
 
     2. Run this tool with following parameters:
 		
-		* Fasta file: ``CA-Root_S1_scaffolds.fasta``
+	* Fasta file: ``CA-Root_S1_scaffolds.fasta``
 
         * Minimal length: ``500``
 
@@ -128,15 +128,15 @@ BUSCO (Benchmarking Universal Single-Copy Orthologs) is a tool allowing to answe
 
 .. admonition:: Hands-On: BUSCO
 
-    1. At the top of the Tools panel (on the left), search for 'busco' and click on it.
+	1. At the top of the Tools panel (on the left), search for 'busco' and click on it.
 
-    2. Run BUSCO with the following parameters:
+	2. Run BUSCO with the following parameters:
 
-        * Sequences to analyze: ``Filter sequences by length on X``
+		* Sequences to analyze: ``Filter sequences by length on X``
 
-        * Mode: ``Genome``
+		* Mode: ``Genome``
 
-        * Lineage: ``proteobacteria``
+        	* Lineage: ``proteobacteria``
 	
 	3. Click Execute. 
 
