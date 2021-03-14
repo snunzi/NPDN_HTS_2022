@@ -17,6 +17,7 @@ NPDN HTS Bioinformatics Training 2021
    phylogeny
    metagenomics
    metabarcode
+   help
 
 
 Indices and tables
