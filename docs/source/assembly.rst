@@ -96,7 +96,7 @@ Mapping with bowtie2 should have produced a sam file that contains all the align
 
 			* “Require that these flags are set”: ``Read is mapped in a proper pair``
 
-			..image:: _static/samtoolsfilter.png
+			.. image:: _static/samtoolsfilter.png
 
     3. Click 'Execute'
 
