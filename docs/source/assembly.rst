@@ -40,9 +40,9 @@ Map Reads to Target Genome
 
 .. admonition:: Hands-On: Map Reads to HLB Genome
 
-    1. In tools menu, search for 'bowtie2' and click on it.
-
-    2. Run bowtie2 tool with the following parameters
+	1. In tools menu, search for 'bowtie2' and click on it.
+	
+	2. Run bowtie2 tool with the following parameters
 
 		* “Is this single or paired library”: ``Paired-end``
 
