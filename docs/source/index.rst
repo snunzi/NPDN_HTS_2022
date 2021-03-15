@@ -11,6 +11,7 @@ NPDN HTS Bioinformatics Training 2021
    :caption: Contents:
 
    intro
+   hlb
    seqqc
    assembly
    assemblyqc
