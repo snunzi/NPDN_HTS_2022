@@ -17,6 +17,7 @@ NPDN HTS Bioinformatics Training 2021
    assemblyqc
    phylogeny
    metagenomics
+   metagenomics-p2
    metabarcode
    help
 
