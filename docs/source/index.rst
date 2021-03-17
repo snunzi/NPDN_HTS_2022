@@ -20,6 +20,7 @@ NPDN HTS Bioinformatics Training 2021
    metagenomics-p2
    metabarcode
    help
+   questions
 
 
 Indices and tables
