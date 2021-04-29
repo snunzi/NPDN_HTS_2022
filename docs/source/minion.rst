@@ -4,4 +4,4 @@ Introduction to 3G HTS
 Lecture
 ^^^^^^^
 
-.. slide:: https://docs.google.com/presentation/d/1kR8c-9roBdhdYYlzs1dCUO65_-gKE2UzmQMAMcmY1gg
+.. slide:: https://docs.google.com/presentation/d/1A3FwRZyxSOyOj5vyUuSE9mMnp23V9-Cd2KvaGUxxMsM
