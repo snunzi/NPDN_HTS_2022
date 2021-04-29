@@ -18,6 +18,7 @@ NPDN HTS Bioinformatics Training 2021
    phylogeny
    metagenomics
    metagenomics-p2
+   minion
    metabarcode
    help
    questions
