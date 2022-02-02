@@ -76,6 +76,7 @@ Upload Data
 
     4. Click 'start' 
 
+If you have issues uploading data, please go to the `Help`_. page for instructions to import from a Galaxy history.
 
 -------------------------
 
