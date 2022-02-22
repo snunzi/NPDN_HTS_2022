@@ -227,9 +227,6 @@ The columns in the output correspond to the following:
 	.. image:: _static/kraken_results.png
 
 
-2G Viral Metagenomics: Part 2
-=================================
-
 Kraken allowed us to identify what virus(es) were present in out sample, but gave us no information on whether this is a new strain, percent identity, etc. We will perform assembly of our reads to get more information.
 
 

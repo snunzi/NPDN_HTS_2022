@@ -1,4 +1,4 @@
-Identifying Diagnostic Primers from WGA
+ID Diagnostic Primers from WGA
 =========================================
 
 Lecture

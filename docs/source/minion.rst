@@ -1,5 +1,5 @@
-Introduction to 3G HTS
-===========================
+3G HTS: Progress and Challenges
+================================
 
 Lecture
 ^^^^^^^
