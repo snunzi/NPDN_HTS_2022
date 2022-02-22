@@ -1,5 +1,5 @@
-2G Viral Metagenomics: Part 1
-=================================
+2G Viral Metagenomics
+======================
 
 Lecture
 ^^^^^^^
@@ -14,7 +14,7 @@ Detecting viruses from metagenomic sequencing data can be done with two main tec
 * Taxonomic assignment of reads
 * Contig assembly followed by taxonomic assignment of contigs
 
-In this tutorial, we will focus on taxonomic assignment of reads.
+First, we will focus on the taxonomic assignment of reads.
 
 Import Data
 ^^^^^^^^^^^

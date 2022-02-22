@@ -9,12 +9,8 @@ Lecture
 Introduction
 ^^^^^^^^^^^^
 
-Detecting viruses from metagenomic sequencing data can be done with two main techniques:
+Detecting viruses from metagenomic MinION sequencing data follows a similar bioinformatic workflow as 2G data. However, different programs are used that account for the different read properties.
 
-* Taxonomic assignment of reads
-* Contig assembly followed by taxonomic assignment of contigs
-
-In this tutorial, we will focus on taxonomic assignment of reads.
 
 Import Data
 ^^^^^^^^^^^
@@ -22,44 +18,32 @@ Lets import data from a shared history. These are raw reads, exactly how you wou
 
 .. admonition:: Hands-On: Import Viral Metagenomic Reads
 
-    1. At the top of the screen click on ``Shared Data`` and select ``Histories``
+    1. At the top of the screen click on ``Shared Data`` and select ``Pages``
 
-    2. In the search field, search for and select ``NPDN 2022 Data Day 2 Part 1 ``
+    2. In the search field, search for ``NPDN`` and click on the page ``NPDN HTS 2022``
 
-    3. When the history loads, click on the plus sign icon at the right of the page (Import History) to import all data and results to your history.
+    3. Find the history for ``NPDN 2022 Data Day 3 Part I`` Select the green plus sign to import into your Galaxy environment.
 
-Host Removal
+Sequence QC
 ^^^^^^^^^^^^^
-The first step in any sequencing analysis is quality check (FastQC) and trimming (Trimmomatic or alternative). These sequences have already been trimmed since you practiced those steps on day 1.
+The first step in any sequencing analysis is quality check and trimming. These sequences have already been based called with on-board base calling and this is how you would receive them off of the sequencer. Let's first check the quality of the data we received.
 
-First, we need to remove host contamination since this is a metagenomic sample.
 
-.. admonition:: Hands-On: Map to Host Genome
+.. admonition:: Hands-On: Quality Check
 
-	1. In tools menu, search for 'bowtie2' and click on it.
+	1. In tools menu, search for 'Nanoplot' and click on it.
 
-	2. Run bowtie2 tool with the following parameters
+	2. Run Nanoplot tool with the following parameters
 
-		* “Is this single or paired library”: ``Paired-end``
-
-		* “FASTA/Q File #1”: Click on the down arrow and select ``SampleC_reads_R1.fastq.gz``
-
-		* “FASTA/Q File #2”: Click on the down arrow and select ``SampleC_reads_R2.fastq.gz``
-
-		* “Will you select a reference genome from your history or use a built-in index?”: ``Use a genome from the history and build index``
-
-		* “Select reference genome”: ``prunus_genome.fna.gz``
-
-		* “Save the bowtie2 mapping statistics to the history”: ``Yes``
+		* “files”: ``virus_3g.fastq.gz``
 
 		* Leave the rest as default.
 
 	3. Click Execute.
 
 
-Bowtie2 should produce two output datasets, one with mapped reads and the other with the corresponding mapping statistics. Let's take a look at the mapping statistics.
+Nanoplot should produce four output files. Let's take a look at the html output report.
 
-Inspect the mapping stats by clicking on eye icon next to ``Bowtie2 on X:mapping stats`` output in your history panel.
 
 -------------------------
 
@@ -67,137 +51,122 @@ Inspect the mapping stats by clicking on eye icon next to ``Bowtie2 on X:mapping
 
 	.. container:: header
 
-		**What percentage of reads mapped to the prunus genome?**
+		**How many reads are in this dataset?**
 
-	This sample should have ~83% of the reads mapped to the host, prunus, genome.
+	This sample should have 20,000 reads. (I sub-sampled the reads to this number so that programs would run in a reasonable amount of time.)
 
 ----------------------------
 
-Non-Host Read Extraction
+Quality Filtering
 ^^^^^^^^^^^^^^^^^^^
+Many of the reads appear to have  low quality bases. Let's filter the data to remove adapters, chimeric reads, and low quality bases.
 
-Mapping with bowtie2 should have produced a bam file that contains all the alignment information. We need to filter this to get only the reads that did not map to the prunus reference genome (these are the reads we will use for assembly--all other reads are likely host) We will use the tool samtools for this filtering.
+
+.. admonition:: Hands-On: Quality Filtering
+
+	1. In tools menu, search for 'Filtlong' and click on it.
+
+	2. Run Filtlong tool with the following parameters
+
+		* Input Fastq: ``virus_3g.fastq.gz``
+
+    * Output Theshholds:
+
+        * Keep Percentage: ``20``
+
+        * Min Length: ``1000``
+
+		* Leave the rest as default.
+
+	3. Click Execute.
+
+
+Filtlong should produce a new fastq file with high quality, long reads. Let's now trim to remove adapters and split chimeric reads.
+
+.. admonition:: Hands-On: Adapter Trimming
+
+	1. In tools menu, search for 'porechop' and click on it.
+
+	2. Run porechop tool with the following parameters
+
+		* Input Fastq: ``filtlong fastq``
+
+    * Output Format for the Reads: ``fastq.gz``
+
+		* Leave the rest as default.
+
+	3. Click Execute.
+
+
+Non-Host Read Extraction
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Just like we did with 2G viral metagenomic data, we will now remove host reads from the dataset. The mapper is specialized to long read data, but all other steps and the process are the same.
 
 .. admonition:: Hands-On: Remove Host Reads
 
-	1. In the tools menu search for 'samtools view' tool to filter the reads mapped with Bowtie2.
+  1. Run minimap2 with the following parameters:
+
+    * Will you select a reference genome from your history or use a built-in index? ``Use genome from history and build index``
+
+    * Use the following dataset as the reference sequence: ``tomato.fna.gz``
+
+    * Select fastq dataset: ``Porechop on data x``
+
+    * Leave rest as default press Execute
 
 	2. Run samtools view with the following parameters:
 
-		* “SAM/BAM/CRAM data set”: ``Bowtie2 on X: alignments``
+		* “SAM/BAM/CRAM data set”: ``Minimap2 on X: alignments``
 
 		* “What would you like to look at?”: ``A filtered/subsampled selection of reads``
 
 		* in “Configure filters”
 
-			* “Require that these flags are set”: ``Read is unmapped`` and ``Mate is unmapped``
+			* “Require that these flags are set”: ``Read is unmapped``
 
-			.. image:: _static/bowtie2_prunus.png
+      * Click 'Execute'
 
-	3. Click 'Execute'
-
-
-Conversion to fastq format
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Sequence analysis tools typically expect their input data to be fastq-formatted, but what we have after mapping and filtering is data in BAM format. BAM files represent alignment information in compressed (non-human readable) format. We need to convert only reads that did not map to host back into their original fastq format before proceeding.
-
-.. admonition:: Hands-On: Convert BAM to fastq.gz
-
-	1. In the tools menu search for 'samtools fastx' tool and click on it.
-
-	2. Set the following parameters for samtools fastx:
+	3. Run samtools fastx
 
 		* “BAM or SAM file to convert”: ``Samtools view on X: filtered alignments``
 
 		* “Output format”: ``compressed FASTQ``
 
-		* “outputs”: ``READ1 and READ2``
+		* “outputs”: ``other``
 
 		* Leave all other parameters as defaults.
 
-	3. Click 'Execute'
+	   * Click 'Execute'
 
 	4. When job completes, rename the output files to something more useful.
 
-		* Click on pencil icon next to ``data X converted to fastqsanger.gz (READ 1)`` and rename to ``SampleC_nonhost_R1.fastq.gz``
+		* Click on pencil icon next to ``data X converted to fastqsanger.gz`` and rename to ``virus3g_nonhost.fastq.gz``
 
-		* Click on pencil icon next to ``data X converted to fastqsanger.gz (READ 2)`` and rename to ``SampleC_nonhost_R2.fastq.gz``
 
 Read Assignment with Kraken
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this tutorial we will be using kraken to identify members in a mixed set of metagenomic reads.
+Just like with our 2g dataset, we will be using kraken to identify members in a mixed set of metagenomic reads.
 
 .. admonition:: Hands-On: Taxonomic Read Assignment with Kraken
 
-    1. In the tools menu search for 'kraken' tool and click on it.
 
-    2. Run kraken with the following parameters:
+    1. Run kraken with the following parameters:
 
-		* Single or paired end reads: ``paired``
+		* Single: ``single``
 
-		* Forward strand:  ``SampleC_nonhost_R1.fastq.gz`` (file we just filtered).
-
-		* Reverse strand: ``SampleC_nonhost_R2.fastq.gz`` (file we just filtered).
-
-		.. image:: _static/kraken_input.png
+		* Input Sequences:  ``virus3g_nonhost.fastq.gz`` (file we just filtered).
 
 		* Select a kraken database: ``viral_2020``
 
 		* Leave all others as default and click ``Execute``
 
+  	2. Run kraken-report with the following parameters:
 
-Examine Kraken Output
-^^^^^^^^^^^^^^^^^^^^^^
+  		* Kraken output: ``Kraken on data x: Classification``
 
-You should see a new output file at the top of your history panel called ``Kraken on data x: Classification``. Lets take a look at it.
-
-When the file turns green (analysis done running) click on the eye icon next to the file to view it.
-
-The columns correspond to the following:
-
-1. "C"/"U": one letter code indicating that the sequence was either classified or unclassified.
-
-2. The sequence ID, obtained from the FASTA/FASTQ header.
-
-3. The taxonomy ID Kraken used to label the sequence; this is 0 if the sequence is unclassified.
-
-4. The length of the sequence in bp.
-
-5. A space-delimited list indicating the LCA mapping of each k-mer in the sequence. For example, "562:13 561:4 A:31 0:1 562:3" would indicate that:
-
-	* the first 13 k-mers mapped to taxonomy ID #562
-
-	* the next 4 k-mers mapped to taxonomy ID #561
-
-	* the next 31 k-mers contained an ambiguous nucleotide
-
-	* the next k-mer was not in the database
-
-	* the last 3 k-mers mapped to taxonomy ID #562
-
-.. container:: toggle
-
-    .. container:: header
-
-        **After looking at the first few sections of the results, in general are more reads classified or unclassified?**
-
-    You should see the first column contains a lot of "U's", therefore most of the reads appear to be unclassified. Remember, we are just screening these against the virus database, so these reads could be host, bacteria, etc.
-
-Kraken Report
-^^^^^^^^^^^^^^
-While the raw kraken output contains a lot of information, it is impossible to make sense of without summarizing it. Here, we will generate a kraken report to summarize the results.
-
-.. admonition:: Hands-On: Generate a Kraken Report
-
-	1. In the tools menu search for 'kraken-report' tool and click on it.
-
-	2. Run kraken-report with the following parameters:
-
-		* Kraken output: ``Kraken on data x: Classification``
-
-		* Select a Kraken database: ``viral_2020``
+  		* Select a Kraken database: ``viral_2020``
 
 When this analysis finished running it should generate a file ``Kraken-report on x``. Click the eye icon next to the result file and view the results.
 
@@ -219,8 +188,73 @@ The columns in the output correspond to the following:
 
     .. container:: header
 
-        **What is the predominant classified species in the sample?**
+        **What viruses were classified in the sample?**
 
-    You should see the majority of the sample was unclassified (probably host, bacteria, etc.), and the predominant virus in the sample was plum pox virus.
+    You should see the majority of the sample was classified as Pepino mosaic virus and Tomato Brown Rugose Fruit virus.
 
-	.. image:: _static/kraken_results.png
+Metagenome Assembly
+^^^^^^^^^^^^^^^^^^^^^
+
+Next we will assemble all reads that did not map to host using an assembler for 3G data, Flye. There are multiple assemblers available for MinION data, but this assembler provides a nice balance of accuracy and speed.
+
+.. admonition:: Hands-On: Assembly with Flye
+
+	1. In the tools menu search for 'flye' tool and click on it.
+
+	2. Run this tool with following parameters:
+
+		* Input Reads: ``Svirus3g_nonhost.fastq.gz``
+
+    * Perform metagenomic assembly: ``Yes``
+
+		* Leave the rest as default
+
+	3. Click Exceute.
+
+When the assembly completes, take a look at the ``Flye assembly info`` output.
+
+-------------------------
+
+.. container:: toggle
+
+	.. container:: header
+
+		**How many contigs were assembled?**
+
+	This sample should ~4 scaffolds assembled.
+
+----------------------------
+
+
+
+Blast Contigs
+^^^^^^^^^^^^^^
+
+Let's Blast the contigs we generated through NCBI server.
+
+.. admonition:: Hands-On: Contig Filtering
+
+	1. In the history panel, click on the eye icon to view your contigs ``Flye on X consensus``.
+
+	2. Copy the entire content of this file. (Should be four contigs in fasta format)
+
+	3. Open the NCBI Blastn website in another browser tab: https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastSearch
+
+	4. Paste your contigs sequences	you copied into the box under ``Enter accession number(s), gi(s), or FASTA sequence(s)``
+
+	5. Scroll down and hit Blast.
+
+
+-------------------------
+
+.. container:: toggle
+
+	.. container:: header
+
+		**What was your top Blast hit for each of your four contigs?**
+
+	You should see your contigs are Pepino moasci virus (mixed infection) and Tomato Brown Rugose Fruit Virus.
+
+----------------------------
+
+Questions/Discussion
