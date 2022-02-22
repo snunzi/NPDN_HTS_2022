@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assess Assembly Quality &mdash; NPDN_HTS_2021 0.0.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Generate a Phylogeny" href="phylogeny.html" />
+    <link rel="prev" title="Intro to Genome Assembly" href="assembly.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> NPDN_HTS_2021
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro to HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqqc.html">Sequence QC/Intro to Galaxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Intro to Genome Assembly</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Assess Assembly Quality</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lecture">Lecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assembly-statistics">Assembly Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#percent-identity">Percent Identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#genome-length-filtering">Genome Length Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gene-completeness">Gene Completeness</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="phylogeny.html">Generate a Phylogeny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primers.html">Identifying Diagnostic Primers from WGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2gvirus.html">2G Viral Metagenomics: Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2gvirus.html#g-viral-metagenomics-part-2">2G Viral Metagenomics: Part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minion.html">Introduction to 3G HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3gvirus.html">Viral Metagenomics: Read Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3gmeta.html">Metabarcoding/Unique Genes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Group Questions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NPDN_HTS_2021</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Assess Assembly Quality</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/assemblyqc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="assess-assembly-quality">
+<h1>Assess Assembly Quality<a class="headerlink" href="#assess-assembly-quality" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lecture">
+<h2>Lecture<a class="headerlink" href="#lecture" title="Permalink to this headline">¶</a></h2>
+<iframe src="https://docs.google.com/presentation/embed?id=1y0qND-SfwQUltUH7rWfdyS8B52HDXT7kNYUOTn6taDg" frameborder="0" width="480" height="375" allowfullscreen="true" mozallowfullscreen="true"  webkitallowfullscreen="true"> </iframe></div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Not all genome assemblies are good. In order to see what the quality of our assembly is, lets assess.</p>
+</div>
+<div class="section" id="assembly-statistics">
+<h2>Assembly Statistics<a class="headerlink" href="#assembly-statistics" title="Permalink to this headline">¶</a></h2>
+<p>First, we would like to view basic statistics about our assembly. We will use the program ‘Quast’ for this which produces nice summary statistics and allows us to compare our new assembly to a reference assembly.</p>
+<div class="admonition-hands-on-genome-qc-statistics admonition">
+<p class="admonition-title">Hands-On: Genome QC Statistics</p>
+<ol class="arabic">
+<li><p>At the top of the Tools panel (on the left), search for ‘Quast’ and click on it.</p></li>
+<li><p>Run Quast with the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Contigs/scaffolds file: <code class="docutils literal notranslate"><span class="pre">CA-Root_S1_scaffolds.fasta</span></code></p></li>
+<li><p>Use a reference genome? <code class="docutils literal notranslate"><span class="pre">Yes</span></code></p></li>
+<li><p>Reference genome: <code class="docutils literal notranslate"><span class="pre">psy62.fna.gz</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Leave all else as default and click ‘Execute’</p></li>
+</ol>
+</div>
+<p>You should see multiple output file produced. Let’s look at the HTML report, <code class="docutils literal notranslate"><span class="pre">Quast</span> <span class="pre">on</span> <span class="pre">X:</span> <span class="pre">HTML</span> <span class="pre">report</span></code> and gather some key information (click on eye icon next to this file).</p>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>This assemble covers how much of the psy62 reference genome?</strong></p>
+</div>
+<p>Our assembled contigs cover ~99% of the psy62 genome.</p>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>What is the N50?(You may have to click ‘Extended report’ on the html to see this statistic)</strong></p>
+</div>
+<p>The N50 should be ~158,000.</p>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>How many contigs were generated?</strong></p>
+</div>
+<p>There are 62 total contigs.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="percent-identity">
+<h2>Percent Identity<a class="headerlink" href="#percent-identity" title="Permalink to this headline">¶</a></h2>
+<p>If you look at the Quast output, you’ll see some of the contigs in our assembly were completely unaligned to the psy62 genome. Are these mis assemblies, or contamination? Let’s use a more precise aligner and look at the percent identity between our assembly and the psy62.</p>
+<div class="admonition-hands-on-genome-comparison admonition">
+<p class="admonition-title">Hands-On: Genome Comparison</p>
+<ol class="arabic">
+<li><p>At the top of the Tools panel (on the left), search for ‘dnadiff’ and click on it.</p></li>
+<li><p>Run the tool with following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Reference sequence: <code class="docutils literal notranslate"><span class="pre">psy62.fna.gz</span></code> (Use drop down arrow)</p></li>
+<li><p>Query Sequence: <code class="docutils literal notranslate"><span class="pre">CA-Root_S1_scaffolds.fasta</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click Execute.</p></li>
+</ol>
+</div>
+<p>View the results file by clicking on the eye icon next to the <code class="docutils literal notranslate"><span class="pre">DNAdiff</span> <span class="pre">on</span> <span class="pre">X:</span> <span class="pre">report</span></code> in the history panel.</p>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>Are all contigs now aligned, or are some unaligned?</strong></p>
+</div>
+<p>All contigs should now be aligned. If some contigs still were not aligned we would need to Blast the unaligned contigs to make sure they were not contamination.</p>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>What is the percent identity of our genome assembly?</strong></p>
+</div>
+<p>Percent identity is ~99%. Two different scores are presented, 1-to-1 and M-to-M, 1-to-1 keeps alignments that were marked best on BOTH sequences (ref and query), while M-to-M is keeps alignments that are marked best on either (ie. will report multiple alignments if there was a duplication event). Both measures are appropriate and used/reported.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="genome-length-filtering">
+<h2>Genome Length Filtering<a class="headerlink" href="#genome-length-filtering" title="Permalink to this headline">¶</a></h2>
+<p>You should see by the genome statistics that many contigs we generated are quite short, under 500bp. Because our read length was only 300bp, this means that the contig comes from only 1-2 reads. These contigs are not very reliable and likely introduce some sequencing error and potential contamination into our assembly. Let’s filter them out so they are not used in our further analysis.</p>
+<div class="admonition-hands-on-contig-filtering admonition">
+<p class="admonition-title">Hands-On: Contig Filtering</p>
+<ol class="arabic">
+<li><p>At the top of the Tools panel (on the left), search for ‘filter sequences by length’ and click on it.</p></li>
+<li><p>Run this tool with following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fasta file: <code class="docutils literal notranslate"><span class="pre">CA-Root_S1_scaffolds.fasta</span></code></p></li>
+<li><p>Minimal length: <code class="docutils literal notranslate"><span class="pre">500</span></code></p></li>
+<li><p>Maximum length: <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="gene-completeness">
+<h2>Gene Completeness<a class="headerlink" href="#gene-completeness" title="Permalink to this headline">¶</a></h2>
+<p>While the statistics above will tell us very obvious problems with the genome assembly, it gives no information about the quality of the sequence content. We want to evaluate if the genome sequence contains all the genes we expect to find in the considered species, and if their sequence are correct.</p>
+<p>BUSCO (Benchmarking Universal Single-Copy Orthologs) is a tool allowing to answer this question: by comparing genomes from various more or less related species, the authors determined sets of ortholog genes that are present in single copy in (almost) all the species of a clade (Bacteria, Fungi, Plants, Insects, Mammalians, …). Most of these genes are essential for the organism to live, and are expected to be found in any newly sequenced genome from the corresponding clade. Using this data, BUSCO is able to evaluate the proportion of these essential genes (also named BUSCOs) found in a genome sequence or a set of (predicted) transcript or protein sequences. This is a good evaluation of the “completeness” of the genome or annotation.</p>
+<div class="admonition-hands-on-busco admonition">
+<p class="admonition-title">Hands-On: BUSCO</p>
+<ol class="arabic">
+<li><p>At the top of the Tools panel (on the left), search for ‘busco’ and click on it.</p></li>
+<li><p>Run BUSCO with the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Sequences to analyze: <code class="docutils literal notranslate"><span class="pre">Filter</span> <span class="pre">sequences</span> <span class="pre">by</span> <span class="pre">length</span> <span class="pre">on</span> <span class="pre">X</span></code></p></li>
+<li><p>Mode: <code class="docutils literal notranslate"><span class="pre">Genome</span> <span class="pre">assemblies</span> <span class="pre">(DNA)</span></code></p></li>
+<li><p>Auto-detect or select lineage? <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">lineage</span></code></p></li>
+<li><p>Lineage: <code class="docutils literal notranslate"><span class="pre">proteobacteria</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click Execute.</p></li>
+</ol>
+</div>
+<p>To examine the output click on the eye icon next to the <code class="docutils literal notranslate"><span class="pre">Busco</span> <span class="pre">on</span> <span class="pre">X:</span> <span class="pre">short</span> <span class="pre">summary</span></code>.</p>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>How many complete single copy BUSCO genes did we find? Out of how many?</strong></p>
+</div>
+<p>There should be about 202 out of 219 complete and single copy buscos.</p>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>Do you think that the genome quality is good enough to perform further analysis (annotation, phylogeny, primer design, etc)?</strong></p>
+</div>
+<p>Most of the BUSCO genes are found as complete single copy, and very few are fragmented, which means that our genome is good quality as it contains most of the expected content. It is high enough quality to perform an annotation.</p>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="assembly.html" class="btn btn-neutral float-left" title="Intro to Genome Assembly" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="phylogeny.html" class="btn btn-neutral float-right" title="Generate a Phylogeny" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Schyler Nunziata.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

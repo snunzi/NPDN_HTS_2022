@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro to Genome Assembly &mdash; NPDN_HTS_2021 0.0.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Assess Assembly Quality" href="assemblyqc.html" />
+    <link rel="prev" title="Sequence QC/Intro to Galaxy" href="seqqc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> NPDN_HTS_2021
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro to HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqqc.html">Sequence QC/Intro to Galaxy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intro to Genome Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lecture">Lecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upload-reference-assembly">Upload Reference Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#map-reads-to-target-genome">Map Reads to Target Genome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hlb-read-extraction">HLB Read Extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conversion-to-fastq-format">Conversion to fastq format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upload-assembly">Upload Assembly</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assemblyqc.html">Assess Assembly Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phylogeny.html">Generate a Phylogeny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primers.html">Identifying Diagnostic Primers from WGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2gvirus.html">2G Viral Metagenomics: Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2gvirus.html#g-viral-metagenomics-part-2">2G Viral Metagenomics: Part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minion.html">Introduction to 3G HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3gvirus.html">Viral Metagenomics: Read Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3gmeta.html">Metabarcoding/Unique Genes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Group Questions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NPDN_HTS_2021</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Intro to Genome Assembly</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/assembly.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="intro-to-genome-assembly">
+<h1>Intro to Genome Assembly<a class="headerlink" href="#intro-to-genome-assembly" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lecture">
+<h2>Lecture<a class="headerlink" href="#lecture" title="Permalink to this headline">¶</a></h2>
+<iframe src="https://docs.google.com/presentation/embed?id=1moHOxyc9WtCWhpixcR8QwG7ErxFiZWjgws6dF29B0PY" frameborder="0" width="480" height="375" allowfullscreen="true" mozallowfullscreen="true"  webkitallowfullscreen="true"> </iframe></div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>With some plant pathogens it is not possible, or very hard, to purify DNA/RNA for sequencing from just the specimen of interest. Instead you will isolate DNA that is contaminated, sometimes heavily, with DNA/RNA of a different origin (host, other microbes, etc.). This is the case for HLB samples, which we can not culture. Such contamination can pose an issue with genome assembly.</p>
+<p>In this practical you will learn assemble an HLB genome with preprocessing to remove host and other contaminant genome reads.</p>
+</div>
+<div class="section" id="upload-reference-assembly">
+<h2>Upload Reference Assembly<a class="headerlink" href="#upload-reference-assembly" title="Permalink to this headline">¶</a></h2>
+<p>In order to only assemble HLB reads, we will map to a reference genome and extract only those reads that map to it. First, lets upload a complete genome assembly available on NCBI. There are a few complete genomes available on NCBI, we chose this one because it contains all known prophages (at the time we published this genome). If we had more time, we could align reads to all complete genomes to ensure we maximize the number of HLB reads we extract.</p>
+<div class="admonition-hands-on-upload-genome-assembly admonition">
+<p class="admonition-title">Hands-On: Upload Genome Assembly</p>
+<ol class="arabic simple">
+<li><p>At the top of the Tools panel (on the left), click Upload</p></li>
+<li><p>Click on ‘Regular’ Tab at the top</p></li>
+<li><p>Click ‘Paste/Fetch Data’ and paste in the NCBI link to the published psy62 HLB genome:</p></li>
+</ol>
+<p><a class="reference external" href="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/765/GCF_000023765.2_ASM2376v2/GCF_000023765.2_ASM2376v2_genomic.fna.gz">https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/765/GCF_000023765.2_ASM2376v2/GCF_000023765.2_ASM2376v2_genomic.fna.gz</a></p>
+<ol class="arabic simple" start="4">
+<li><p>Click ‘start’</p></li>
+<li><p>After upload completes, let’s rename it to something more useful. On the history panel you should see the newly uploaded genome. Hit the pencil icon, to ‘edit attributes’ and rename the file to ‘psy62.fna.gz’. Save changes by clicking the save icon.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="map-reads-to-target-genome">
+<h2>Map Reads to Target Genome<a class="headerlink" href="#map-reads-to-target-genome" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-hands-on-map-reads-to-hlb-genome admonition">
+<p class="admonition-title">Hands-On: Map Reads to HLB Genome</p>
+<ol class="arabic">
+<li><p>In tools menu, search for ‘bowtie2’ and click on it.</p></li>
+<li><p>Run bowtie2 tool with the following parameters</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Is this single or paired library”: <code class="docutils literal notranslate"><span class="pre">Paired-end</span></code></p></li>
+<li><p>“FASTA/Q File #1”: Click on the down arrow and select <code class="docutils literal notranslate"><span class="pre">Trimmomatic</span> <span class="pre">on</span> <span class="pre">CA_Root_R1.fastq.gz</span> <span class="pre">(R1</span> <span class="pre">paired)</span></code></p></li>
+<li><p>“FASTA/Q File #2”: Click on the down arrow and select <code class="docutils literal notranslate"><span class="pre">Trimmomatic</span> <span class="pre">on</span> <span class="pre">CA_Root_R2.fastq.gz</span> <span class="pre">(R2</span> <span class="pre">paired)</span></code></p></li>
+<li><p>“Will you select a reference genome from your history or use a built-in index?”: <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">a</span> <span class="pre">genome</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">history</span> <span class="pre">and</span> <span class="pre">build</span> <span class="pre">index</span></code></p></li>
+<li><p>“Select reference genome”: <code class="docutils literal notranslate"><span class="pre">psy62.fna.gz</span></code></p></li>
+<li><p>“Save the bowtie2 mapping statistics to the history”: <code class="docutils literal notranslate"><span class="pre">Yes</span></code></p></li>
+<li><p>Leave the rest as default.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click Execute.</p></li>
+</ol>
+</div>
+<p>The tool run should produce two output datasets, one with mapped reads and the other with the corresponding mapping statistics. Let’s take a look at the mapping statistics.</p>
+<p>Inspect the mapping stats by clicking on eye icon next to <code class="docutils literal notranslate"><span class="pre">Bowtie2</span> <span class="pre">on</span> <span class="pre">X:mapping</span> <span class="pre">stats</span></code> output in your history panel.</p>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>What percentage of reads mapped to the HLB genome?</strong></p>
+</div>
+<p>This sample should have ~5% of the reads mapped to the HLB psy62 genome.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="hlb-read-extraction">
+<h2>HLB Read Extraction<a class="headerlink" href="#hlb-read-extraction" title="Permalink to this headline">¶</a></h2>
+<p>Mapping with bowtie2 should have produced a sam file that contains all the alignment information. We need to filter this to get only the reads that mapped to the HLB reference genome (these are the reads we will use for assembly–all other reads are likely host or other microbiota) We will use the tool samtools for this filtering.</p>
+<div class="admonition-hands-on-map-reads-to-hlb-genome admonition">
+<p class="admonition-title">Hands-On: Map Reads to HLB Genome</p>
+<ol class="arabic">
+<li><p>In the tools menu search for ‘samtools view’ tool to filter the reads mapped with Bowtie2.</p></li>
+<li><p>Run samtools view with the following parameters:</p>
+<blockquote>
+<div><ul>
+<li><p>“SAM/BAM/CRAM data set”: <code class="docutils literal notranslate"><span class="pre">Bowtie2</span> <span class="pre">on</span> <span class="pre">X:</span> <span class="pre">alignments</span></code></p></li>
+<li><p>“What would you like to look at?”: <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">filtered/subsampled</span> <span class="pre">selection</span> <span class="pre">of</span> <span class="pre">reads</span></code></p></li>
+<li><p>in “Configure filters”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Require that these flags are set”: <code class="docutils literal notranslate"><span class="pre">Read</span> <span class="pre">is</span> <span class="pre">mapped</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">proper</span> <span class="pre">pair</span></code></p></li>
+</ul>
+<img alt="_images/samtoolsfilter.png" src="_images/samtoolsfilter.png" />
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click ‘Execute’</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="conversion-to-fastq-format">
+<h2>Conversion to fastq format<a class="headerlink" href="#conversion-to-fastq-format" title="Permalink to this headline">¶</a></h2>
+<p>Assembly tools typically expect their input data to be fastq-formatted, but what we have after mapping and filtering is data in BAM format. BAM files represent alignment information in compressed (non-human readable) format. We need to convert only the reads mapped to the HLB genome back into their original fastq format before proceeding to assembly.</p>
+<div class="admonition-hands-on-convert-bam-to-fastq-gz admonition">
+<p class="admonition-title">Hands-On: Convert BAM to fastq.gz</p>
+<ol class="arabic">
+<li><p>In the tools menu search for ‘samtools fastx’ tool and click on it.</p></li>
+<li><p>Set the following parameters for samtools fastx:</p>
+<blockquote>
+<div><ul>
+<li><p>“BAM or SAM file to convert”: <code class="docutils literal notranslate"><span class="pre">Samtools</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">X:</span> <span class="pre">filtered</span> <span class="pre">alignments</span></code></p></li>
+<li><p>“Output format”: <code class="docutils literal notranslate"><span class="pre">compressed</span> <span class="pre">FASTQ</span></code></p></li>
+<li><p>“outputs”: <code class="docutils literal notranslate"><span class="pre">READ1</span> <span class="pre">and</span> <span class="pre">READ2</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Leave all other parameters as defaults.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click ‘Execute’</p></li>
+</ol>
+</div>
+<p>The assembly is the most time consuming part, and can easily take 10+ hours. Therefore, we will not perform the assembly now. We will work with the genome that has already been assembled from there reads. If you would like to perform the assembly on your own time, there are many assembly tutorials available for Galaxy here : <a class="reference external" href="https://training.galaxyproject.org/training-material/topics/assembly/">https://training.galaxyproject.org/training-material/topics/assembly/</a></p>
+</div>
+<div class="section" id="upload-assembly">
+<h2>Upload Assembly<a class="headerlink" href="#upload-assembly" title="Permalink to this headline">¶</a></h2>
+<p>We will upload the assembly produced from the dataset we have been working with. This assembly was produced with Spades, a tool available in Galaxy. On your own time, you can follow the assembly tutorial available on the Galaxy training material page to assemble the genome using our filtered reads.</p>
+<div class="admonition-hands-on-upload-genome-assembly admonition">
+<p class="admonition-title">Hands-On: Upload Genome Assembly</p>
+<ol class="arabic simple">
+<li><p>At the top of the Tools panel (on the left), click Upload</p></li>
+<li><p>Click on ‘Regular’ Tab at the top</p></li>
+<li><p>Click ‘Choose local files’ and navigate to where you placed the <code class="docutils literal notranslate"><span class="pre">CA-Root_scaffolds.fasta</span></code> assembly I sent you.</p></li>
+<li><p>Click ‘start’</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="seqqc.html" class="btn btn-neutral float-left" title="Sequence QC/Intro to Galaxy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="assemblyqc.html" class="btn btn-neutral float-right" title="Assess Assembly Quality" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Schyler Nunziata.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

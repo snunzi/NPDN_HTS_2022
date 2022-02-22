@@ -1,2 +1,2 @@
-# NPDN_HTS_2021
-This is the documentation of NPDN bioinformatics training 2021.
+# NPDN_HTS_2022
+This is the documentation for NPDN HTS bioinformatics training 2022.

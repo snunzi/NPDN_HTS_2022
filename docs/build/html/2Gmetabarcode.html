@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Illumina Metabarcoding &mdash; NPDN_HTS_2021 0.0.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> NPDN_HTS_2021
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro to HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqqc.html">Sequence QC/Intro to Galaxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Intro to Genome Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assemblyqc.html">Assess Assembly Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phylogeny.html">Generate a Phylogeny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primers.html">Identifying Diagnostic Primers from WGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2gvirus.html">2G Viral Metagenomics: Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2gvirus.html#g-viral-metagenomics-part-2">2G Viral Metagenomics: Part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minion.html">Introduction to 3G HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3gvirus.html">Viral Metagenomics: Read Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3gmeta.html">Metabarcoding/Unique Genes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Group Questions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NPDN_HTS_2021</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Illumina Metabarcoding</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/2Gmetabarcode.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="illumina-metabarcoding">
+<h1>Illumina Metabarcoding<a class="headerlink" href="#illumina-metabarcoding" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lecture">
+<h2>Lecture<a class="headerlink" href="#lecture" title="Permalink to this headline">¶</a></h2>
+<iframe src="https://docs.google.com/presentation/embed?id=1co8nFTBXemb2USTyM5UX7qi7k9Qo1ErjfYFRG7LcF5M" frameborder="0" width="480" height="375" allowfullscreen="true" mozallowfullscreen="true"  webkitallowfullscreen="true"> </iframe></div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Here, we will analyze a non-routine diagnostic rice sample using 2G metabarcoding. The sample tested positive for Pantoea ananatis using a conventional PCR assay; however, qPCR data for these samples was not available.  A highly degenerate primer pair was used to amplify an ~290 bp fragment of DNA gyrase ß subunit gene (gyrB), a common phylogenetic marker present in single copy in most bacteria. Amplicons were sequenced by 2x250 Illumina MiSeq sequencing.</p>
+<p>Identifying bacteria from amplicon sequencing data can be done with two main techniques:</p>
+<ul class="simple">
+<li><p>Cluster sequences into Operational Taxonomic Units (OTUs)</p></li>
+<li><p>Reconstruct exact sequences into Amplicon Sequence Variants (ASVs)</p></li>
+</ul>
+<p>In this tutorial, we will focus on ASV analysis using the popular R package DADA2 <a class="reference external" href="https://benjjneb.github.io/dada2/">https://benjjneb.github.io/dada2/</a>.</p>
+</div>
+<div class="section" id="import-data">
+<h2>Import Data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
+<p>Lets import data from a shared history. These are raw reads, exactly how you would receive them from a sequencing company or off your own Illumina sequencer. Files that have been split (or “demultiplexed”) by sample by the sequencer and the barcodes/adapters have already been removed. There is also a curated database of ~40,000 gyrB reference sequences, which allows for the automated taxonomic annotation of a gyrB amplicon dataset. This database was generated by Barret et al. (2015).</p>
+<div class="admonition-hands-on-import-viral-metagenomic-reads admonition">
+<p class="admonition-title">Hands-On: Import Viral Metagenomic Reads</p>
+<ol class="arabic simple">
+<li><p>At the top of the screen click on <code class="docutils literal notranslate"><span class="pre">Shared</span> <span class="pre">Data</span></code> and select <code class="docutils literal notranslate"><span class="pre">Histories</span></code></p></li>
+<li><p>In the search field, search for and select <a href="#id1"><span class="problematic" id="id2">``</span></a>NPDN 2022 Data Day 2 Part 2 ``</p></li>
+<li><p>When the history loads, click on the plus sign icon at the right of the page (Import History) to import all data and results to your history.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="importing-a-workflow">
+<h2>Importing a Workflow<a class="headerlink" href="#importing-a-workflow" title="Permalink to this headline">¶</a></h2>
+<p>As you saw from the previous tutorials, many bioinformatics analysis requires multiple programs and/or steps. To reduce time spent running tools individually, they can be chained together into a pipeline or workflow. Here, we will import a workflow I put together that mimics the tutorial from the DADA2 website, here: <a class="reference external" href="https://benjjneb.github.io/dada2/tutorial.html">https://benjjneb.github.io/dada2/tutorial.html</a></p>
+<div class="admonition-hands-on-import-dada2-workflow admonition">
+<p class="admonition-title">Hands-On: Import DADA2 Workflow</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>At the top of your History, click on ‘Shared Data’ and select ‘Workflows’</p></li>
+<li><p>Search for ‘NPDN 2022 DADA2’ and select.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>In the upper left corner, select the plus sign to import this workflow into your Galaxy environment.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="running-the-workflow">
+<h2>Running the Workflow<a class="headerlink" href="#running-the-workflow" title="Permalink to this headline">¶</a></h2>
+<p>The first step in any sequencing analysis is quality check and filtering and trimming. DADA2 has built in tools to perform these steps. Let’s start with plotting the read quality.</p>
+<div class="admonition-hands-on-run-dada2-workflow admonition">
+<p class="admonition-title">Hands-On: Run DADA2 Workflow</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>On the top panel slick on ‘Workflow’.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p>To the right of the workflow you just imported, click the run workflow button.</p></li>
+<li><p>Select data input for the following steps.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Tool 1 and 2 :
+Forward read data: <code class="docutils literal notranslate"><span class="pre">R2A_sub_R1.fastq.gz</span></code>
+Forward read data: <code class="docutils literal notranslate"><span class="pre">R2A_sub_R2.fastq.gz</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple" start="4">
+<li><p>At the top select ‘Run Workflow’</p></li>
+</ol>
+</div></blockquote>
+</div>
+<p>While the workflow is running, lets talk about each step in the workflow.</p>
+</div>
+<div class="section" id="running-final-step-dada2">
+<h2>Running Final Step DADA2<a class="headerlink" href="#running-final-step-dada2" title="Permalink to this headline">¶</a></h2>
+<p>The final step in the DADA2 pipeline is assigning taxonomy to our error corrected merged reads.</p>
+<div class="admonition-hands-on-run-dada2-assign-taxonomy admonition">
+<p class="admonition-title">Hands-On: Run DADA2 Assign Taxonomy</p>
+<ol class="arabic simple">
+<li><p>Search for the tool, ‘dada2: assignTaxonomy and Add Species’ and select.</p></li>
+<li><p>Run dada2 assignTaxonomy with the following parameters:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>sequences to be assigned: <code class="docutils literal notranslate"><span class="pre">dada2:</span> <span class="pre">removeBimeraDenovo</span> <span class="pre">on</span> <span class="pre">data</span> <span class="pre">19</span></code></p></li>
+<li><p>Select a reference dataset your history or use a built-in? <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">reference</span> <span class="pre">data</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">history</span></code></p></li>
+<li><p>Reference data set: <code class="docutils literal notranslate"><span class="pre">train_set_gyrB_v4.fasta</span></code></p></li>
+<li><p>Names of the taxonomic levels in the data set: <code class="docutils literal notranslate"><span class="pre">Gene,Phylum,Class,Order,Family,Genus,Species</span></code></p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Leave rest as default and press ‘Execute’</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="blast-asvs">
+<h2>Blast ASVs<a class="headerlink" href="#blast-asvs" title="Permalink to this headline">¶</a></h2>
+<p>Let’s download the results so we can organize and filter them before blasting.</p>
+<div class="admonition-hands-on-blast-asvs admonition">
+<p class="admonition-title">Hands-On: Blast ASVs</p>
+<ol class="arabic simple">
+<li><p>Download your result files <code class="docutils literal notranslate"><span class="pre">dada2:</span> <span class="pre">assignTaxonomy</span> <span class="pre">and</span> <span class="pre">addSpecies</span> <span class="pre">on</span> <span class="pre">data</span> <span class="pre">3</span> <span class="pre">and</span> <span class="pre">data</span> <span class="pre">21</span></code> and <code class="docutils literal notranslate"><span class="pre">dada2:</span> <span class="pre">removeBimeraDenovo</span> <span class="pre">on</span> <span class="pre">data</span> <span class="pre">19</span></code></p></li>
+<li><p>Open these files in excel, sort both by ASV and copy the read counts to the assignTaxonomy output. You should now have a table with all the ASVs with taxonomy assigned along with number of reads.</p></li>
+<li><p>Copy the sequence for the ASV with the highest read count. Paste this into blastn on NCBI <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a></p></li>
+</ol>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>What is your top blast hit?</strong></p>
+</div>
+<p>You should find the top hit is Pantoea ananatis. Great, we were able to id the pathogen to species! But what about the other      Pantoea ASVs? If you have time blast these sequences, you should see this sample has a potential mixed infection.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Schyler Nunziata.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

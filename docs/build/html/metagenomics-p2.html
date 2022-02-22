@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metagenomics Part 2 &mdash; NPDN_HTS_2021 0.0.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction to 3G HTS" href="minion.html" />
+    <link rel="prev" title="Metagenomics" href="metagenomics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> NPDN_HTS_2021
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro to HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hlb.html">NGS for HLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqqc.html">Sequence QC/Intro to Galaxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Intro to Genome Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assemblyqc.html">Assess Assembly Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phylogeny.html">Generate a Phylogeny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metagenomics.html">Metagenomics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Metagenomics Part 2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#host-removal">Host Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#non-host-read-extraction">Non-Host Read Extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conversion-to-fastq-format">Conversion to fastq format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#genome-assembly-with-metaspades">Genome Assembly with Metaspades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contig-length-filtering">Contig Length Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#blast-contigs">Blast Contigs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="minion.html">Introduction to 3G HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabarcode.html">Metabarcoding/Unique Genes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Group Questions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NPDN_HTS_2021</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Metagenomics Part 2</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/metagenomics-p2.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="metagenomics-part-2">
+<h1>Metagenomics Part 2<a class="headerlink" href="#metagenomics-part-2" title="Permalink to this headline">¶</a></h1>
+<p>Kraken allowed us to identify what virus(es) were present in out sample, but gave us no information on whether this is a new strain, percent identity, etc. We will perform assembly of our reads to get more information.</p>
+<div class="section" id="host-removal">
+<h2>Host Removal<a class="headerlink" href="#host-removal" title="Permalink to this headline">¶</a></h2>
+<p>First, we need to remove host contamination since this is a metagenomic sample.</p>
+<div class="admonition-hands-on-map-to-host-genome admonition">
+<p class="admonition-title">Hands-On: Map to Host Genome</p>
+<ol class="arabic">
+<li><p>In tools menu, search for ‘bowtie2’ and click on it.</p></li>
+<li><p>Run bowtie2 tool with the following parameters</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Is this single or paired library”: <code class="docutils literal notranslate"><span class="pre">Paired-end</span></code></p></li>
+<li><p>“FASTA/Q File #1”: Click on the down arrow and select <code class="docutils literal notranslate"><span class="pre">SampleC_reads_R1.fastq.gz</span></code></p></li>
+<li><p>“FASTA/Q File #2”: Click on the down arrow and select <code class="docutils literal notranslate"><span class="pre">SampleC_reads_R2.fastq.gz</span></code></p></li>
+<li><p>“Will you select a reference genome from your history or use a built-in index?”: <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">a</span> <span class="pre">genome</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">history</span> <span class="pre">and</span> <span class="pre">build</span> <span class="pre">index</span></code></p></li>
+<li><p>“Select reference genome”: <code class="docutils literal notranslate"><span class="pre">prunus_genome.fna.gz</span></code></p></li>
+<li><p>“Save the bowtie2 mapping statistics to the history”: <code class="docutils literal notranslate"><span class="pre">Yes</span></code></p></li>
+<li><p>Leave the rest as default.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click Execute.</p></li>
+</ol>
+</div>
+<p>Bowtie2 should produce two output datasets, one with mapped reads and the other with the corresponding mapping statistics. Let’s take a look at the mapping statistics.</p>
+<p>Inspect the mapping stats by clicking on eye icon next to <code class="docutils literal notranslate"><span class="pre">Bowtie2</span> <span class="pre">on</span> <span class="pre">X:mapping</span> <span class="pre">stats</span></code> output in your history panel.</p>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>What percentage of reads mapped to the prunus genome?</strong></p>
+</div>
+<p>This sample should have ~83% of the reads mapped to the host, prunus, genome.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="non-host-read-extraction">
+<h2>Non-Host Read Extraction<a class="headerlink" href="#non-host-read-extraction" title="Permalink to this headline">¶</a></h2>
+<p>Mapping with bowtie2 should have produced a sam file that contains all the alignment information. We need to filter this to get only the reads that did not map to the prunus reference genome (these are the reads we will use for assembly–all other reads are likely host) We will use the tool samtools for this filtering.</p>
+<div class="admonition-hands-on-map-reads-to-hlb-genome admonition">
+<p class="admonition-title">Hands-On: Map Reads to HLB Genome</p>
+<ol class="arabic">
+<li><p>In the tools menu search for ‘samtools view’ tool to filter the reads mapped with Bowtie2.</p></li>
+<li><p>Run samtools view with the following parameters:</p>
+<blockquote>
+<div><ul>
+<li><p>“SAM/BAM/CRAM data set”: <code class="docutils literal notranslate"><span class="pre">Bowtie2</span> <span class="pre">on</span> <span class="pre">X:</span> <span class="pre">alignments</span></code></p></li>
+<li><p>“What would you like to look at?”: <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">filtered/subsampled</span> <span class="pre">selection</span> <span class="pre">of</span> <span class="pre">reads</span></code></p></li>
+<li><p>in “Configure filters”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Require that these flags are set”: <code class="docutils literal notranslate"><span class="pre">Read</span> <span class="pre">is</span> <span class="pre">unmapped</span></code> and <code class="docutils literal notranslate"><span class="pre">Mate</span> <span class="pre">is</span> <span class="pre">unmapped</span></code></p></li>
+</ul>
+<img alt="_images/bowtie2_prunus.png" src="_images/bowtie2_prunus.png" />
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click ‘Execute’</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="conversion-to-fastq-format">
+<h2>Conversion to fastq format<a class="headerlink" href="#conversion-to-fastq-format" title="Permalink to this headline">¶</a></h2>
+<p>Assembly tools typically expect their input data to be fastq-formatted, but what we have after mapping and filtering is data in BAM format. BAM files represent alignment information in compressed (non-human readable) format. We need to convert only reads that did not map to host back into their original fastq format before proceeding to assembly.</p>
+<div class="admonition-hands-on-convert-bam-to-fastq-gz admonition">
+<p class="admonition-title">Hands-On: Convert BAM to fastq.gz</p>
+<ol class="arabic">
+<li><p>In the tools menu search for ‘samtools fastx’ tool and click on it.</p></li>
+<li><p>Set the following parameters for samtools fastx:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“BAM or SAM file to convert”: <code class="docutils literal notranslate"><span class="pre">Samtools</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">X:</span> <span class="pre">filtered</span> <span class="pre">alignments</span></code></p></li>
+<li><p>“Output format”: <code class="docutils literal notranslate"><span class="pre">compressed</span> <span class="pre">FASTQ</span></code></p></li>
+<li><p>“outputs”: <code class="docutils literal notranslate"><span class="pre">READ1</span> <span class="pre">and</span> <span class="pre">READ2</span></code></p></li>
+<li><p>Leave all other parameters as defaults.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click ‘Execute’</p></li>
+<li><p>When job completes, rename the output files to something more useful.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Click on pencil icon next to <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">X</span> <span class="pre">converted</span> <span class="pre">to</span> <span class="pre">fastqsanger.gz</span> <span class="pre">(READ</span> <span class="pre">1)</span></code> and rename to <code class="docutils literal notranslate"><span class="pre">SampleC_nonhost_R1.fastq.gz</span></code></p></li>
+<li><p>Click on pencil icon next to <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">X</span> <span class="pre">converted</span> <span class="pre">to</span> <span class="pre">fastqsanger.gz</span> <span class="pre">(READ</span> <span class="pre">2)</span></code> and rename to <code class="docutils literal notranslate"><span class="pre">SampleC_nonhost_R2.fastq.gz</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="genome-assembly-with-metaspades">
+<h2>Genome Assembly with Metaspades<a class="headerlink" href="#genome-assembly-with-metaspades" title="Permalink to this headline">¶</a></h2>
+<p>Next we will assemble all reads that did not map to host using a specialized version of Spades designed for metagenomic samples, Metaspades.</p>
+<div class="admonition-hands-on-assembly-with-metaspades admonition">
+<p class="admonition-title">Hands-On: Assembly with Metaspades</p>
+<ol class="arabic">
+<li><p>In the tools menu search for ‘metaspades’ tool and click on it.</p></li>
+<li><p>Run this tool with following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Forward Reads: <code class="docutils literal notranslate"><span class="pre">SampleC_nonhost_R1.fastq.gz</span></code></p></li>
+<li><p>Reverse Reads: <code class="docutils literal notranslate"><span class="pre">`SampleC_nonhost_R2.fastq.gz</span></code></p></li>
+<li><p>Leave the rest as default</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click Exceute.</p></li>
+</ol>
+</div>
+<p>When the assembly completes, take a look at the <code class="docutils literal notranslate"><span class="pre">SPades</span> <span class="pre">scaffolds</span></code> output.</p>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>How many scaffolds were assembled?</strong></p>
+</div>
+<p>This sample should ~422 scaffolds assembled.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="contig-length-filtering">
+<h2>Contig Length Filtering<a class="headerlink" href="#contig-length-filtering" title="Permalink to this headline">¶</a></h2>
+<p>Because it would take us a long time to blast search over 400 contigs, we will filter by length and only look at the longest contigs here. Normally we would pick a much lower threshold (~200 nt) in order not to miss anything, especially viroids.</p>
+<div class="admonition-hands-on-contig-filtering admonition">
+<p class="admonition-title">Hands-On: Contig Filtering</p>
+<ol class="arabic">
+<li><p>At the top of the Tools panel (on the left), search for ‘filter sequences by length’ and click on it.</p></li>
+<li><p>Run this tool with following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fasta file: <code class="docutils literal notranslate"><span class="pre">`SPades</span> <span class="pre">scaffolds</span></code></p></li>
+<li><p>Minimal length: <code class="docutils literal notranslate"><span class="pre">3000</span></code></p></li>
+<li><p>Maximum length: <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>How many contigs are left after filtering?</strong></p>
+</div>
+<p>This sample should have ~2 contigs left after filtering.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="blast-contigs">
+<h2>Blast Contigs<a class="headerlink" href="#blast-contigs" title="Permalink to this headline">¶</a></h2>
+<p>While Galaxy does have a built in Blast tool, I found it very slow. With the small number of contigs we have left, we can use Blast through NCBI.</p>
+<div class="admonition-hands-on-contig-filtering admonition">
+<p class="admonition-title">Hands-On: Contig Filtering</p>
+<ol class="arabic simple">
+<li><p>In the history panel, click on the eye icon to view your newly filtered contigs <code class="docutils literal notranslate"><span class="pre">Filter</span> <span class="pre">sequences</span> <span class="pre">by</span> <span class="pre">length</span> <span class="pre">on</span> <span class="pre">X</span></code>.</p></li>
+<li><p>Copy the entire content of this file. (Should be two contigs in fasta format)</p></li>
+<li><p>Open the NCBI Blastn website in another browser tab: <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastSearch">https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastSearch</a></p></li>
+<li><p>Paste your contigs sequences you copied into the box under <code class="docutils literal notranslate"><span class="pre">Enter</span> <span class="pre">accession</span> <span class="pre">number(s),</span> <span class="pre">gi(s),</span> <span class="pre">or</span> <span class="pre">FASTA</span> <span class="pre">sequence(s)</span></code></p></li>
+<li><p>Scroll down and hit Blast.</p></li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>What was your top Blast hit for each of your two contigs?</strong></p>
+</div>
+<p>You should see your longer contig is Plum Pox Virus D (with entire genome recovered), while your other contig is host contamination.</p>
+</div>
+<hr class="docutils" />
+<p>Questions/Discussion</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="metagenomics.html" class="btn btn-neutral float-left" title="Metagenomics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="minion.html" class="btn btn-neutral float-right" title="Introduction to 3G HTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Schyler Nunziata.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

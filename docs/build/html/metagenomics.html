@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metagenomics &mdash; NPDN_HTS_2021 0.0.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Metagenomics Part 2" href="metagenomics-p2.html" />
+    <link rel="prev" title="Generate a Phylogeny" href="phylogeny.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> NPDN_HTS_2021
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro to HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hlb.html">NGS for HLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqqc.html">Sequence QC/Intro to Galaxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Intro to Genome Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assemblyqc.html">Assess Assembly Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phylogeny.html">Generate a Phylogeny</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Metagenomics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lecture">Lecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#read-assignment-with-kraken">Read Assignment with Kraken</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examine-kraken-output">Examine Kraken Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kraken-report">Kraken Report</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="metagenomics-p2.html">Metagenomics Part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minion.html">Introduction to 3G HTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabarcode.html">Metabarcoding/Unique Genes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Group Questions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NPDN_HTS_2021</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Metagenomics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/metagenomics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="metagenomics">
+<h1>Metagenomics<a class="headerlink" href="#metagenomics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lecture">
+<h2>Lecture<a class="headerlink" href="#lecture" title="Permalink to this headline">¶</a></h2>
+<iframe src="https://docs.google.com/presentation/embed?id=1co8nFTBXemb2USTyM5UX7qi7k9Qo1ErjfYFRG7LcF5M" frameborder="0" width="480" height="375" allowfullscreen="true" mozallowfullscreen="true"  webkitallowfullscreen="true"> </iframe></div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In metagenomics, information about micro-organisms in an environment can be extracted with two main techniques:</p>
+<ul class="simple">
+<li><p>Amplicon sequencing, which sequences only the rRNA or ribosomal DNA of organisms</p></li>
+<li><p>Shotgun sequencing, which sequences full genomes of the micro-organisms in the environment</p></li>
+</ul>
+<p>In this tutorial, we will focus on shotgun sequencing.</p>
+</div>
+<div class="section" id="read-assignment-with-kraken">
+<h2>Read Assignment with Kraken<a class="headerlink" href="#read-assignment-with-kraken" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial we will be using kraken to identify members in a mixed set of metagenomic reads.</p>
+<div class="admonition-hands-on-taxonomic-read-assignment-with-kraken admonition">
+<p class="admonition-title">Hands-On: Taxonomic Read Assignment with Kraken</p>
+<ol class="arabic">
+<li><p>In the tools menu search for ‘kraken’ tool and click on it.</p></li>
+<li><p>Run kraken with the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Single or paired end reads: <code class="docutils literal notranslate"><span class="pre">paired</span></code></p></li>
+<li><p>Forward strand: Click the upload dataset icon and upload <code class="docutils literal notranslate"><span class="pre">SampleC_nonhost_reads_R1.fastq.gz</span></code> file from the metagenome folder.</p></li>
+<li><p>Reverse strand: Click the upload dataset icon and upload <code class="docutils literal notranslate"><span class="pre">SampleC_nonhost_reads_R2.fastq.gz</span></code> file from the metagenome folder.</p></li>
+</ul>
+<img alt="_images/kraken_input.png" src="_images/kraken_input.png" />
+<ul class="simple">
+<li><p>Select a kraken database: <code class="docutils literal notranslate"><span class="pre">viral_2020</span></code></p></li>
+<li><p>Leave all others as default and click <code class="docutils literal notranslate"><span class="pre">Execute</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="examine-kraken-output">
+<h2>Examine Kraken Output<a class="headerlink" href="#examine-kraken-output" title="Permalink to this headline">¶</a></h2>
+<p>You should see a new output file at the top of your history panel called <code class="docutils literal notranslate"><span class="pre">Kraken</span> <span class="pre">on</span> <span class="pre">data</span> <span class="pre">x:</span> <span class="pre">Classification</span></code>. Lets take a look at it.</p>
+<p>When the file turns green (analysis done running) click on the eye icon next to the file to view it.</p>
+<p>The columns correspond to the following:</p>
+<ol class="arabic">
+<li><p>“C”/”U”: one letter code indicating that the sequence was either classified or unclassified.</p></li>
+<li><p>The sequence ID, obtained from the FASTA/FASTQ header.</p></li>
+<li><p>The taxonomy ID Kraken used to label the sequence; this is 0 if the sequence is unclassified.</p></li>
+<li><p>The length of the sequence in bp.</p></li>
+<li><p>A space-delimited list indicating the LCA mapping of each k-mer in the sequence. For example, “562:13 561:4 A:31 0:1 562:3” would indicate that:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>the first 13 k-mers mapped to taxonomy ID #562</p></li>
+<li><p>the next 4 k-mers mapped to taxonomy ID #561</p></li>
+<li><p>the next 31 k-mers contained an ambiguous nucleotide</p></li>
+<li><p>the next k-mer was not in the database</p></li>
+<li><p>the last 3 k-mers mapped to taxonomy ID #562</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>After looking at the first few sections of the results, in general are more reads classified or unclassified?</strong></p>
+</div>
+<p>You should see the first column contains a lot of “U’s”, therefore most of the reads appear to be unclassified. Remember, we are just screening these against the virus database, so these reads could be host, bacteria, etc.</p>
+</div>
+</div>
+<div class="section" id="kraken-report">
+<h2>Kraken Report<a class="headerlink" href="#kraken-report" title="Permalink to this headline">¶</a></h2>
+<p>While the raw kraken output contains a lot of information, it is impossible to make sense of without summarizing it. Here, we will generate a kraken report to summarize the results.</p>
+<div class="admonition-hands-on-generate-a-kraken-report admonition">
+<p class="admonition-title">Hands-On: Generate a Kraken Report</p>
+<ol class="arabic">
+<li><p>In the tools menu search for ‘kraken-report’ tool and click on it.</p></li>
+<li><p>Run kraken-report with the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Kraken output: <code class="docutils literal notranslate"><span class="pre">Kraken</span> <span class="pre">on</span> <span class="pre">data</span> <span class="pre">x:</span> <span class="pre">Classification</span></code></p></li>
+<li><p>Select a Kraken database: <code class="docutils literal notranslate"><span class="pre">viral_2020</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<p>When this analysis finished running it should generate a file <code class="docutils literal notranslate"><span class="pre">Kraken-report</span> <span class="pre">on</span> <span class="pre">x</span></code>. Click the eye icon next to the result file and view the results.</p>
+<p>The columns in the output correspond to the following:</p>
+<ol class="arabic simple">
+<li><p>percentage of reads in the clade/taxon in Column 6</p></li>
+<li><p>number of reads in the clade.</p></li>
+<li><p>number of reads in the clade but not further classified.</p></li>
+<li><p>code indicating the rank of the classification: (U)nclassified, (D)omain, (K)ingdom, (P)hylum, (C)lass, (O)rder, (F)amily, (G)enus, (S)pecies).</p></li>
+<li><p>NCBI taxonomy ID.</p></li>
+<li><p>Scientific name</p></li>
+</ol>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>What is the predominant classified species in the sample?</strong></p>
+</div>
+<p>You should see the majority of the sample was unclassified (probably host), and the predominant virus in the sample was plum pox virus.</p>
+<blockquote>
+<div><img alt="_images/kraken_results.png" src="_images/kraken_results.png" />
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="phylogeny.html" class="btn btn-neutral float-left" title="Generate a Phylogeny" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="metagenomics-p2.html" class="btn btn-neutral float-right" title="Metagenomics Part 2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Schyler Nunziata.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
