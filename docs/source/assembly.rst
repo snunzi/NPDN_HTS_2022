@@ -4,7 +4,7 @@ Intro to Genome Assembly
 Lecture
 ^^^^^^^
 
-.. slide:: https://docs.google.com/presentation/d/1moHOxyc9WtCWhpixcR8QwG7ErxFiZWjgws6dF29B0PY
+.. slide:: https://docs.google.com/presentation/d/18dPo81PCN_cEQyBI3qmdRlmzcgRnXzuqUtPCaWnwrPs
 
 Introduction
 ^^^^^^^^^^^^

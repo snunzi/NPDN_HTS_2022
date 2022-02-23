@@ -4,7 +4,7 @@ Assess Assembly Quality
 Lecture
 ^^^^^^^
 
-.. slide:: https://docs.google.com/presentation/d/1y0qND-SfwQUltUH7rWfdyS8B52HDXT7kNYUOTn6taDg
+.. slide:: https://docs.google.com/presentation/d/1-rpk3EoC-pYkBa1Rqqlzi-YnuD6mJ9NBVM4U-eASa2Q
 
 Introduction
 ^^^^^^^^^^^^

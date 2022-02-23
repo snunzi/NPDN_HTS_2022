@@ -1,4 +1,4 @@
-Illumina Metabarcoding
+2G Metabarcoding
 =======================
 
 Lecture

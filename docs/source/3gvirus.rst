@@ -1,4 +1,4 @@
-Viral Metagenomics: Read Mapping
+3G Viral Metagenomics
 =================================
 
 Lecture

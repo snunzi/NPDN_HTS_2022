@@ -4,7 +4,7 @@ Sequence QC/Intro to Galaxy
 Lecture
 ^^^^^^^
 
-.. slide:: https://docs.google.com/presentation/d/1VVVzrzxw0vGctlJWPXkPqrQMjWNdIgY_aUmj_QEbln4
+.. slide:: https://docs.google.com/presentation/d/1UW-LtFjL-4pJANNzSwKvQC_IK8ILbLiw6K6ToYupZC8
 
 Introduction
 ^^^^^^^^^^^^
