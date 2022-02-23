@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'NPDN_HTS_2021'
-copyright = '2021, Schyler Nunziata'
+project = 'NPDN_HTS_2022'
+copyright = '2022, Schyler Nunziata'
 author = 'Schyler Nunziata'
 
 # The full version, including alpha/beta/rc tags
