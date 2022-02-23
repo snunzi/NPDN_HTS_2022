@@ -89,7 +89,7 @@ Mapping with bowtie2 should have produced a bam file that contains all the align
 
 		* “What would you like to look at?”: ``A filtered/subsampled selection of reads``
 
-		* in “Configure filters”
+		* In “Configure filters”
 
 			* “Require that these flags are set”: ``Read is unmapped`` and ``Mate is unmapped``
 
@@ -144,7 +144,7 @@ In this tutorial we will be using kraken to identify members in a mixed set of m
 
 		.. image:: _static/kraken_input.png
 
-		* Select a kraken database: ``viral_2020``
+		* Select a kraken database: ``viral_2020`` (or ``Viruses`` depending on which Galaxy instance you are using)
 
 		* Leave all others as default and click ``Execute``
 
@@ -198,7 +198,7 @@ While the raw kraken output contains a lot of information, it is impossible to m
 
 		* Kraken output: ``Kraken on data x: Classification``
 
-		* Select a Kraken database: ``viral_2020``
+		* Select a Kraken database: ``viral_2020`` (or ``Viruses`` depending on which Galaxy instance you are using)
 
 When this analysis finished running it should generate a file ``Kraken-report on x``. Click the eye icon next to the result file and view the results.
 

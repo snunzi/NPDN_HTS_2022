@@ -36,11 +36,11 @@ As you saw from the previous tutorials, many bioinformatics analysis requires mu
 
 .. admonition:: Hands-On: Import DADA2 Workflow
 
-	1. At the top of your History, click on 'Shared Data' and select 'Workflows'
+    1. At the top of your History, click on 'Shared Data' and select 'Workflows'
 
-	2. Search for 'NPDN 2022 DADA2' and select.
+    2. Search for 'NPDN 2022 DADA2' and select.
 
-  3. In the upper left corner, select the plus sign to import this workflow into your Galaxy environment.
+    3. In the upper left corner, select the plus sign to import this workflow into your Galaxy environment.
 
 Running the Workflow
 ^^^^^^^^^^^^^^^^^^^^^
@@ -48,15 +48,15 @@ The first step in any sequencing analysis is quality check and filtering and tri
 
 .. admonition:: Hands-On: Run DADA2 Workflow
 
-	1. On the top panel slick on 'Workflow'.
+    1. On the top panel slick on 'Workflow'.
 
-  2. To the right of the workflow you just imported, click the run workflow button.
+    2. To the right of the workflow you just imported, click the run workflow button.
 
-  3. Select data input for the following steps.
+    3. Select data input for the Tools 1 and 2.
 
-      * Tool 1 and 2 :
-        Forward read data: ``R2A_sub_R1.fastq.gz``
-        Forward read data: ``R2A_sub_R2.fastq.gz``
+        * Forward read data: ``R2A_sub_R1.fastq.gz``
+
+        * Reverse read data: ``R2A_sub_R2.fastq.gz``
 
     4. At the top select 'Run Workflow'
 
@@ -69,19 +69,19 @@ The final step in the DADA2 pipeline is assigning taxonomy to our error correcte
 
 .. admonition:: Hands-On: Run DADA2 Assign Taxonomy
 
-  1. Search for the tool, 'dada2: assignTaxonomy and Add Species' and select.
+    1. Search for the tool, 'dada2: assignTaxonomy and Add Species' and select.
 
-  2. Run dada2 assignTaxonomy with the following parameters:
+    2. Run dada2 assignTaxonomy with the following parameters:
 
-    * sequences to be assigned: ``dada2: removeBimeraDenovo on data 19``
+      * sequences to be assigned: ``dada2: removeBimeraDenovo on data 19``
 
-    * Select a reference dataset your history or use a built-in? ``Use reference data from the history``
+      * Select a reference dataset your history or use a built-in? ``Use reference data from the history``
 
-    * Reference data set: ``train_set_gyrB_v4.fasta``
+      * Reference data set: ``train_set_gyrB_v4.fasta``
 
-    * Names of the taxonomic levels in the data set: ``Gene,Phylum,Class,Order,Family,Genus,Species``
+      * Names of the taxonomic levels in the data set: ``Gene,Phylum,Class,Order,Family,Genus,Species``
 
-  3. Leave rest as default and press 'Execute'
+    3. Leave rest as default and press 'Execute'
 
 Blast ASVs
 ^^^^^^^^^^^
@@ -90,11 +90,11 @@ Let's download the results so we can organize and filter them before blasting.
 
 .. admonition:: Hands-On: Blast ASVs
 
-  1. Download your result files ``dada2: assignTaxonomy and addSpecies on data 3 and data 21`` and ``dada2: removeBimeraDenovo on data 19``
+    1. Download your result files ``dada2: assignTaxonomy and addSpecies on X`` and ``dada2: removeBimeraDenovo on X``
 
-  2. Open these files in excel, sort both by ASV and copy the read counts to the assignTaxonomy output. You should now have a table with all the ASVs with taxonomy assigned along with number of reads.
+    2. Open these files in excel, sort both by ASV and copy the read counts to the assignTaxonomy output. You should now have a table with all the ASVs with taxonomy assigned along with number of reads.
 
-  3. Copy the sequence for the ASV with the highest read count. Paste this into blastn on NCBI https://blast.ncbi.nlm.nih.gov/Blast.cgi
+    3. Copy the sequence for the ASV with the highest read count. Paste this into blastn on NCBI https://blast.ncbi.nlm.nih.gov/Blast.cgi
 
   -------------------------
 
