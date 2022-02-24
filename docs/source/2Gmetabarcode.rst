@@ -4,7 +4,7 @@
 Lecture
 ^^^^^^^
 
-.. slide:: https://docs.google.com/presentation/d/1co8nFTBXemb2USTyM5UX7qi7k9Qo1ErjfYFRG7LcF5M
+
 
 Introduction
 ^^^^^^^^^^^^
