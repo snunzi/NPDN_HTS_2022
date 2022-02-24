@@ -4,6 +4,7 @@
 Lecture
 ^^^^^^^
 
+.. slide:: https://docs.google.com/presentation/d/1GY0R2EuPzH-Ih74eXScMLFzc3bhmoUarG4zTdOj0rPE
 
 
 Introduction
@@ -66,19 +67,19 @@ Many of the reads appear to have  low quality bases. Let's filter the data to re
 
 .. admonition:: Hands-On: Quality Filtering
 
-	1. In tools menu, search for 'Filtlong' and click on it.
+    1. In tools menu, search for 'Filtlong' and click on it.
 
-	2. Run Filtlong tool with the following parameters
+    2. Run Filtlong tool with the following parameters
 
-		* Input Fastq: ``virus_3g.fastq.gz``
+    	* Input Fastq: ``virus_3g.fastq.gz``
 
-    * Output Theshholds:
+      * Output Theshholds:
 
-        * Keep Percentage: ``20``
+          - Keep Percentage: ``20``
 
-        * Min Length: ``1000``
+          - Min Length: ``1000``
 
-		* Leave the rest as default.
+    	* Leave the rest as default.
 
 	3. Click Execute.
 
