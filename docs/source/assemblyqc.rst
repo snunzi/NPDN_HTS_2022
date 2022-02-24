@@ -9,7 +9,7 @@ Lecture
 Introduction
 ^^^^^^^^^^^^
 
-Not all genome assemblies are good. In order to see what the quality of our assembly is, lets assess.
+Not all genome assemblies are good. Lets assess the quality of our genome to see if it should be used for any further analysis.
 
 Assembly Statistics
 ^^^^^^^^^^^^^^^^^^^^

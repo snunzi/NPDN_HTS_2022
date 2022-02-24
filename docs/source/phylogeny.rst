@@ -117,46 +117,46 @@ Here, we will infer the phylogeny using core gene snps.
 .. admonition:: Hands-On: Phylogeny Analysis
 
 
-	1. At the top of the Tools panel (on the left), search for 'raxml' and select 'Phylogenetic reconstruction with RaXML'
+		1. At the top of the Tools panel (on the left), search for 'raxml' and select 'Phylogenetic reconstruction with RaXML'
 
-	2. Parameters to set:
+		2. Parameters to set:
 
-		* Source file with aligned sequences: ``Roary on X core gene alignment``
+			* Source file with aligned sequences: ``Roary on X core gene alignment``
 
-		* RAxML options to use: ``Full option list``
+			* RAxML options to use: ``Full option list``
 
-		* Multiple boostrap specification: ``By bootstrapping specification``
+			* Multiple boostrap specification: ``By bootstrapping specification``
 
-		* Random seed for rapid bootstrapping: Input any number ie. ``736``
+			* Random seed for rapid bootstrapping: Input any number ie. ``736``
 
-		* Algorithm to execute: ``Rapid bootstrap and best ML tree search (a)``
+			* Algorithm to execute: ``Rapid bootstrap and best ML tree search (a)``
 
-	3. Press Execute.
+		3. Press Execute.
 
-	4. Download result file ``Bipartitions`` (This is tree file with bootstrap support values) and rename the file ``raxml.tree``
+		4. Download result file ``Bipartitions`` (This is tree file with bootstrap support values) and rename the file ``raxml.tree``
 
-	Visualize Tree in itol
-	""""""""""""""""""""""
+Visualize Tree in itol
+^^^^^^^^^^^^^^^^^^^^^^^
 
 	.. admonition:: Hands-On: Visualize Tree
 
-	1. Open iTOL webpage: https://itol.embl.de/upload.cgi
+		1. Open iTOL webpage: https://itol.embl.de/upload.cgi
 
-	2. Choose file: ``raxml.tree`` and click upload.
+		2. Choose file: ``raxml.tree`` and click upload.
 
-	2. To display bootstrap support values: After tree is displayed, on the right side there is a control panel. Click ``Advanced`` and set:
+		3. To display bootstrap support values: After tree is displayed, on the right side there is a control panel. Click ``Advanced`` and set:
 
-		* Bootstraps/metadata: ``Display``
+			* Bootstraps/metadata: ``Display``
 
-			* Under this bootstrap panel select ``Text``
+				* Under this bootstrap panel select ``Text``
 
-		.. image:: _static/iotl-boot.png
+			.. image:: _static/iotl-boot.png
 
-	3. Delete Branches with low support values. One option is to delete branches with low support values (There is no agreed upon cutoff). Under Advanced on control panel:
+		4. Delete Branches with low support values. One option is to delete branches with low support values (There is no agreed upon cutoff). Under Advanced on control panel:
 
-		* Delete Branches Bootstrap < ``80``
+			* Delete Branches Bootstrap < ``80``
 
-	4. Click Export on the control panel to select you download format and save tree image.
+		5. Click Export on the control panel to select you download format and save tree image.
 
 
 Visualize Core and Pan Genome

@@ -14,6 +14,8 @@ Detecting viruses from metagenomic MinION sequencing data follows a similar bioi
 
 Import Data
 ^^^^^^^^^^^
+Use this Galaxy instance today: https://usegalaxy.eu/join-training/npdn-hts
+
 Lets import data from a shared history. These are raw reads, exactly how you would receive them from a sequencing company or off your own Illumina sequencer.
 
 .. admonition:: Hands-On: Import Viral Metagenomic Reads
