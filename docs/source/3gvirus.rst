@@ -9,8 +9,7 @@ Lecture
 
 Introduction
 ^^^^^^^^^^^^
-
-Detecting viruses from metagenomic MinION sequencing data follows a similar bioinformatic workflow as 2G data. However, different programs are used that account for the different read properties.
+Here, we will perform virus discovery on a Tomato leaf sample. The data was generated using the SQK-PCS108 cDNA PCR kit (Oxford Nanopore Technologies) and sequenced in a MinION Mk1B device (MIN-101B). Detecting viruses from metagenomic MinION sequencing data follows a similar bioinformatic workflow as 2G data. However, different programs are used that account for the different read properties.
 
 
 Import Data
@@ -56,13 +55,13 @@ Nanoplot should produce four output files. Let's take a look at the html output 
 
 		**How many reads are in this dataset?**
 
-	This sample should have 20,000 reads. (I sub-sampled the reads to this number so that programs would run in a reasonable amount of time.)
+	This sample should have 20,000 reads. (I sub-sampled the reads to this number so that programs would run in a reasonable amount of time. Originally, there were over 3 million reads!)
 
 ----------------------------
 
 Quality Filtering
 ^^^^^^^^^^^^^^^^^^^
-Many of the reads appear to have  low quality bases. Let's filter the data to remove adapters, chimeric reads, and low quality bases.
+Many of the reads appear to have  low quality bases. Let's filter the data to remove adapters, chimeric reads, and low quality bases. First we will filter to retain only high-quality long reads. Quality filtering is a balancing act to retain enough high-quality reads for analysis. Here, we will set a minimum length for reads to maintain. We will also only keep the top 20% of high quality reads. This will help our analysis run faster, you may also set a minimum quality threshold. Please play with filtering on your own time to see how this impacts analysis.
 
 
 .. admonition:: Hands-On: Quality Filtering
@@ -88,17 +87,17 @@ Filtlong should produce a new fastq file with high quality, long reads. Let's no
 
 .. admonition:: Hands-On: Adapter Trimming
 
-	1. In tools menu, search for 'porechop' and click on it.
+    1. In tools menu, search for 'porechop' and click on it.
 
-	2. Run porechop tool with the following parameters
+    2. Run porechop tool with the following parameters
 
-		* Input Fastq: ``filtlong fastq``
+      * Input Fastq: ``filtlong fastq``
 
-    * Output Format for the Reads: ``fastq.gz``
+      * Output Format for the Reads: ``fastq.gz``
 
-		* Leave the rest as default.
+      * Leave the rest as default.
 
-	3. Click Execute.
+    3. Click Execute.
 
 
 Non-Host Read Extraction
@@ -108,43 +107,43 @@ Just like we did with 2G viral metagenomic data, we will now remove host reads f
 
 .. admonition:: Hands-On: Remove Host Reads
 
-  1. Run minimap2 with the following parameters:
+    1. Run minimap2 with the following parameters:
 
-    * Will you select a reference genome from your history or use a built-in index? ``Use genome from history and build index``
+      * Will you select a reference genome from your history or use a built-in index? ``Use genome from history and build index``
 
-    * Use the following dataset as the reference sequence: ``tomato.fna.gz``
+      * Use the following dataset as the reference sequence: ``tomato.fna.gz``
 
-    * Select fastq dataset: ``Porechop on data x``
+      * Select fastq dataset: ``Porechop on data x``
 
-    * Leave rest as default press Execute
+      * Leave rest as default press Execute
 
-	2. Run samtools view with the following parameters:
+    2. Run samtools view with the following parameters:
 
-		* “SAM/BAM/CRAM data set”: ``Minimap2 on X: alignments``
+      * “SAM/BAM/CRAM data set”: ``Minimap2 on X: alignments``
 
-		* “What would you like to look at?”: ``A filtered/subsampled selection of reads``
+      * “What would you like to look at?”: ``A filtered/subsampled selection of reads``
 
-		* in “Configure filters”
+      * in “Configure filters”
 
-			* “Require that these flags are set”: ``Read is unmapped``
+        - “Require that these flags are set”: ``Read is unmapped``
 
       * Click 'Execute'
 
-	3. Run samtools fastx
+    3. Run samtools fastx
 
-		* “BAM or SAM file to convert”: ``Samtools view on X: filtered alignments``
+      * “BAM or SAM file to convert”: ``Samtools view on X: filtered alignments``
 
-		* “Output format”: ``compressed FASTQ``
+      * “Output format”: ``compressed FASTQ``
 
-		* “outputs”: ``other``
+      * “outputs”: ``other``
 
-		* Leave all other parameters as defaults.
+      * Leave all other parameters as defaults.
 
-	   * Click 'Execute'
+      * Click 'Execute'
 
-	4. When job completes, rename the output files to something more useful.
+    4. When job completes, rename the output files to something more useful.
 
-		* Click on pencil icon next to ``data X converted to fastqsanger.gz`` and rename to ``virus3g_nonhost.fastq.gz``
+      * Click on pencil icon next to ``data X converted to fastqsanger.gz`` and rename to ``virus3g_nonhost.fastq.gz``
 
 
 Read Assignment with Kraken
@@ -157,19 +156,19 @@ Just like with our 2g dataset, we will be using kraken to identify members in a 
 
     1. Run kraken with the following parameters:
 
-		* Single: ``single``
+      * Single: ``single``
 
-		* Input Sequences:  ``virus3g_nonhost.fastq.gz`` (file we just filtered).
+      * Input Sequences:  ``virus3g_nonhost.fastq.gz`` (file we just filtered).
 
-		* Select a kraken database: ``viral_2020``
+      * Select a kraken database: ``viral_2020``
 
-		* Leave all others as default and click ``Execute``
+      * Leave all others as default and click ``Execute``
 
-  	2. Run kraken-report with the following parameters:
+    2. Run kraken-report with the following parameters:
 
-  		* Kraken output: ``Kraken on data x: Classification``
+      * Kraken output: ``Kraken on data x: Classification``
 
-  		* Select a Kraken database: ``viral_2020``
+      * Select a Kraken database: ``viral_2020``
 
 When this analysis finished running it should generate a file ``Kraken-report on x``. Click the eye icon next to the result file and view the results.
 
@@ -202,17 +201,17 @@ Next we will assemble all reads that did not map to host using an assembler for 
 
 .. admonition:: Hands-On: Assembly with Flye
 
-	1. In the tools menu search for 'flye' tool and click on it.
+    1. In the tools menu search for 'flye' tool and click on it.
 
-	2. Run this tool with following parameters:
+    2. Run this tool with following parameters:
 
-		* Input Reads: ``Svirus3g_nonhost.fastq.gz``
+      * Input Reads: ``Svirus3g_nonhost.fastq.gz``
 
-    * Perform metagenomic assembly: ``Yes``
+      * Perform metagenomic assembly: ``Yes``
 
-		* Leave the rest as default
+      * Leave the rest as default
 
-	3. Click Exceute.
+    3. Click Exceute.
 
 When the assembly completes, take a look at the ``Flye assembly info`` output.
 

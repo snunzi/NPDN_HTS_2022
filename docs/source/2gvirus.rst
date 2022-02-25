@@ -9,6 +9,8 @@ Lecture
 Introduction
 ^^^^^^^^^^^^
 
+We will be diagnosing an unknown virus from a prunus dataset. This sample was sequenced on an Illumina MiSeq with PE 2x150bp sequencing.
+
 Detecting viruses from metagenomic sequencing data can be done with two main techniques:
 
 * Taxonomic assignment of reads
@@ -18,7 +20,7 @@ First, we will focus on the taxonomic assignment of reads.
 
 Import Data
 ^^^^^^^^^^^
-Use this Galaxy instance today: https://usegalaxy.org/u/schylernunziata/p/npdn-hts-2022
+Use this Galaxy instance today: https://usegalaxy.org
 
 Lets import data from a shared history. These are raw reads, exactly how you would receive them from a sequencing company or off your own Illumina sequencer.
 
@@ -35,7 +37,7 @@ Host Removal
 ^^^^^^^^^^^^^
 The first step in any sequencing analysis is quality check (FastQC) and trimming (Trimmomatic or alternative). These sequences have already been trimmed since you practiced those steps on day 1.
 
-First, we need to remove host contamination since this is a metagenomic sample.
+First, we need to remove host contamination since this is a metagenomic sample. Most of the sample will be reads from the prunus host. Let's map all the reads to the host genome so that we can remove them prior to further analysis.
 
 .. admonition:: Hands-On: Map to Host Genome
 
@@ -79,7 +81,7 @@ Inspect the mapping stats by clicking on eye icon next to ``Bowtie2 on X:mapping
 Non-Host Read Extraction
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Mapping with bowtie2 should have produced a bam file that contains all the alignment information. We need to filter this to get only the reads that did not map to the prunus reference genome (these are the reads we will use for assembly--all other reads are likely host) We will use the tool samtools for this filtering.
+Mapping with bowtie2 should have produced a bam file that contains all the alignment information. We need to filter this to get only the reads that did not map to the prunus reference genome (these are the reads we will use for analysis) We will use the tool samtools for this filtering.
 
 .. admonition:: Hands-On: Remove Host Reads
 
@@ -130,7 +132,7 @@ Sequence analysis tools typically expect their input data to be fastq-formatted,
 Read Assignment with Kraken
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this tutorial we will be using kraken to identify members in a mixed set of metagenomic reads.
+In this tutorial we will be using kraken to identify members in a mixed set of metagenomic reads. Kraken breaks reads into k-mers (substrings of length k) and queries a database with those k-mers
 
 .. admonition:: Hands-On: Taxonomic Read Assignment with Kraken
 
