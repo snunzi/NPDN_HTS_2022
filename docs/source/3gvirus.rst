@@ -71,7 +71,7 @@ Many of the reads appear to have  low quality bases. Let's filter the data to re
 
     2. Run Filtlong tool with the following parameters
 
-    	* Input Fastq: ``virus_3g.fastq.gz``
+      * Input Fastq: ``virus_3g.fastq.gz``
 
       * Output Theshholds:
 
@@ -79,9 +79,9 @@ Many of the reads appear to have  low quality bases. Let's filter the data to re
 
           - Min Length: ``1000``
 
-    	* Leave the rest as default.
+      * Leave the rest as default.
 
-	3. Click Execute.
+    3. Click Execute.
 
 
 Filtlong should produce a new fastq file with high quality, long reads. Let's now trim to remove adapters and split chimeric reads.

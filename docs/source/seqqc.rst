@@ -70,7 +70,6 @@ We will be working with reads as you would receive them off of a sequencer, or f
     1. Copy the link locations below:
 
         https://zenodo.org/record/6110829/files/CA-Root_R1.fastq.gz
-
         https://zenodo.org/record/6110829/files/CA-Root_R2.fastq.gz
 
     2. Open the Galaxy Upload Manager ('Upload Data' on top-right of the tool panel)
