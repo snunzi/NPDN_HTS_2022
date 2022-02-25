@@ -105,9 +105,9 @@ Assess Dataset Quality
 
     2. Run fastqc with the following parameters:
 
-		* Short read data from your current history: Click on the icon for 'multiple datasets' and highlight both ``CA-Root_R1.fastq.gz`` and ``CA-Root_R2.fastq.gz`` (Ctrl-click until they turn blue)
+      * Short read data from your current history: Click on the icon for 'multiple datasets' and highlight both ``CA-Root_R1.fastq.gz`` and ``CA-Root_R2.fastq.gz`` (Ctrl-click until they turn blue)
 
-		* Leave everything else as defaults.
+      * Leave everything else as defaults.
 
     .. image:: _static/fastqc_upload.png
 

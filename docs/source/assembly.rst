@@ -9,9 +9,9 @@ Lecture
 Introduction
 ^^^^^^^^^^^^
 
-With some plant pathogens it is not possible, or very hard, to purify DNA/RNA for sequencing from just the specimen of interest. Instead you will isolate DNA that is contaminated, sometimes heavily, with DNA/RNA of a different origin (host, other microbes, etc.). This is the case for HLB samples, which we can not culture. Such contamination can pose an issue with genome assembly.
+With some plant pathogens it is not possible, or very hard, to purify DNA/RNA for sequencing from just the specimen of interest. Instead you will isolate DNA that is contaminated, sometimes heavily, with DNA/RNA of a different origin (host, other microbes, etc.). This is the case for CLas samples, which we can not culture. Such contamination can pose an issue with genome assembly.
 
-In this practical you will learn assemble an HLB genome with preprocessing to remove host and other contaminant genome reads.
+In this practical you will learn assemble an CLas genome with preprocessing to remove host and other contaminant genome reads.
 
 Upload Reference Assembly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -8,3 +8,4 @@ Lecture
 
 Lecture and Demo
 ^^^^^^^^^^^^^^^^^
+.. slide:: https://docs.google.com/presentation/d/1IAu_sPW8JVOaZLM9mjm331wbeuxCz3L6wyf8y5WaYXA
