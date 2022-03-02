@@ -14,7 +14,7 @@ Here, we will perform virus discovery on a Tomato leaf sample. The data was gene
 
 Import Data
 ^^^^^^^^^^^
-Use this Galaxy instance today: https://usegalaxy.eu/join-training/npdn-hts
+Use this Galaxy instance today: https://usegalaxy.org
 
 Lets import data from a shared history. These are raw reads, exactly how you would receive them from a sequencing company or off your own Illumina sequencer.
 
@@ -24,7 +24,7 @@ Lets import data from a shared history. These are raw reads, exactly how you wou
 
     2. In the search field, search for ``NPDN`` and click on the page ``NPDN HTS 2022``
 
-    3. Find the history for ``NPDN 2022 Data Day 3 Part I`` Select the green plus sign to import into your Galaxy environment.
+    3. Find the history for ``NPDN 2022 Data Day 3`` Select the green plus sign to import into your Galaxy environment.
 
 Sequence QC
 ^^^^^^^^^^^^^
@@ -115,7 +115,7 @@ Just like we did with 2G viral metagenomic data, we will now remove host reads f
 
       * Select fastq dataset: ``Porechop on data x``
 
-      * Leave rest as default press Execute
+      * Leave rest as default press 'Execute'
 
     2. Run samtools view with the following parameters:
 
@@ -127,7 +127,7 @@ Just like we did with 2G viral metagenomic data, we will now remove host reads f
 
         - “Require that these flags are set”: ``Read is unmapped``
 
-      * Click 'Execute'
+      * Leave rest as default press 'Execute'
 
     3. Run samtools fastx
 
@@ -137,9 +137,7 @@ Just like we did with 2G viral metagenomic data, we will now remove host reads f
 
       * “outputs”: ``other``
 
-      * Leave all other parameters as defaults.
-
-      * Click 'Execute'
+      * Leave rest as default press 'Execute'
 
     4. When job completes, rename the output files to something more useful.
 
@@ -160,7 +158,7 @@ Just like with our 2g dataset, we will be using kraken to identify members in a 
 
       * Input Sequences:  ``virus3g_nonhost.fastq.gz`` (file we just filtered).
 
-      * Select a kraken database: ``viral_2020``
+      * Select a kraken database: ``Viruses``
 
       * Leave all others as default and click ``Execute``
 
@@ -205,7 +203,7 @@ Next we will assemble all reads that did not map to host using an assembler for 
 
     2. Run this tool with following parameters:
 
-      * Input Reads: ``Svirus3g_nonhost.fastq.gz``
+      * Input Reads: ``virus3g_nonhost.fastq.gz``
 
       * Perform metagenomic assembly: ``Yes``
 

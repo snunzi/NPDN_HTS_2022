@@ -4,6 +4,7 @@
 Lecture
 ^^^^^^^
 
+.. slide:: https://docs.google.com/presentation/d/1Rvddb-VvfDkbcCkiMTEhZFgeXJjDvpbnK5gU_jsl6Mw
 
 
 Introduction
