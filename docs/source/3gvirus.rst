@@ -166,7 +166,7 @@ Just like with our 2g dataset, we will be using kraken to identify members in a 
 
       * Kraken output: ``Kraken on data x: Classification``
 
-      * Select a Kraken database: ``viral_2020``
+      * Select a Kraken database: ``Viruses``
 
 When this analysis finished running it should generate a file ``Kraken-report on x``. Click the eye icon next to the result file and view the results.
 
