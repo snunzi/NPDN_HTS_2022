@@ -205,6 +205,8 @@ Next we will assemble all reads that did not map to host using an assembler for 
 
       * Input Reads: ``virus3g_nonhost.fastq.gz``
 
+      * estimated genome size: 10k
+
       * Perform metagenomic assembly: ``Yes``
 
       * Leave the rest as default
